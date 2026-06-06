@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <style>
+    .mono-element {
+      stroke: #121111; /* Ink/black in light mode */
+    }
+    .mono-fill {
+      fill: #121111;
+    }
+    @media (prefers-color-scheme: dark) {
+      .mono-element {
+        stroke: #fdfcfc; /* White in dark mode */
+      }
+      .mono-fill {
+        fill: #fdfcfc;
+      }
+    }
+  </style>
+
+  <!-- CPU / Satellite microchip chassis -->
+  <rect x="8" y="8" width="16" height="16" rx="3" class="mono-element" stroke-width="2"/>
+  
+  <!-- Machine Pins / Antenna Arrays (Satellite-Machine aesthetic) -->
+  <!-- Top pins -->
+  <line x1="12" y1="5" x2="12" y2="8" class="mono-element" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="16" y1="5" x2="16" y2="8" class="mono-element" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="20" y1="5" x2="20" y2="8" class="mono-element" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Bottom pins -->
+  <line x1="12" y1="24" x2="12" y2="27" class="mono-element" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="16" y1="24" x2="16" y2="27" class="mono-element" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="20" y1="24" x2="20" y2="27" class="mono-element" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Left pins -->
+  <line x1="5" y1="12" x2="8" y2="12" class="mono-element" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="5" y1="16" x2="8" y2="16" class="mono-element" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="5" y1="20" x2="8" y2="20" class="mono-element" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Right pins -->
+  <line x1="24" y1="12" x2="27" y2="12" class="mono-element" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="24" y1="16" x2="27" y2="16" class="mono-element" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="24" y1="20" x2="27" y2="20" class="mono-element" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Orbital Ring inside the microchip core -->
+  <circle cx="16" cy="16" r="4.5" class="mono-element" stroke-width="1.5" stroke-dasharray="1.5, 1"/>
+  
+  <!-- Solid Planetary/Machine Center -->
+  <circle cx="16" cy="16" r="2.2" class="mono-fill"/>
+</svg>

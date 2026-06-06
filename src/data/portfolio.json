@@ -1,0 +1,1364 @@
+{
+  "version": "2.0",
+  "lastUpdated": "2026-06-06T15:02:09.256Z",
+  "meta": {
+    "title": ">_  SSN.SYS",
+    "author": "Shreesha S Nekkar",
+    "description": "A futuristic, AI-native portfolio showcasing my CS journey through interactive data visualization, project holograms, and particle systems.",
+    "favicon": "/favicon.svg",
+    "canonicalUrl": "https://shreeshasn.github.io",
+    "keywords": [
+      "CS Student",
+      "Full Stack",
+      "Machine Learning",
+      "Web Development"
+    ],
+    "siteUrl": "https://shreeshasn.github.io",
+    "ogImage": "https://shreeshasn.github.io/og-image.webp",
+    "twitterHandle": "@shreeshasn"
+  },
+  "identity": {
+    "firstName": "Shreesha",
+    "lastName": "S Nekkar",
+    "fullName": "Shreesha S Nekkar",
+    "title": "CS Engineering Student",
+    "avatar": {
+      "url": "/assets/avatar.webp",
+      "initials": "SSN",
+      "bgColor": "#201d1d"
+    },
+    "tagline": "Building with code and AI",
+    "subtitle": "Full-stack developer | AI/ML enthusiast | Problem solver",
+    "email": "shreeshasnekkar81@gmail.com",
+    "phone": "7619482685",
+    "location": {
+      "city": "Mysuru",
+      "state": "Karnataka",
+      "country": "India",
+      "timezone": "IST"
+    },
+    "pronouns": "he/him",
+    "status": "Open to internships and exciting projects",
+    "statusEmoji": ""
+  },
+  "bio": {
+    "shortBio": "A CS student passionate about building interactive experiences and solving complex problems with code.",
+    "longBio": "I'm a Computer Science student with a deep passion for full-stack development and machine learning. I started my journey with fundamentals, built my way through web development, and now explore the intersection of AI and interactive systems. Every project is a stepping stone in understanding how technology shapes the future.",
+    "philosophy": "Code is not just about functionality; it's about creating experiences that matter.",
+    "currentFocus": "Building intelligent, interactive systems at the intersection of AI and web development",
+    "futureAspiration": "Create tools that empower people to solve real-world problems",
+    "narrative": {
+      "phase1": {
+        "title": "Fundamentals Phase",
+        "duration": "2024-01 to 2024-06",
+        "description": "Started with data structures and algorithms, learning the building blocks of computer science.",
+        "keyMoment": "Realized that code is like composing music—every piece matters."
+      },
+      "phase2": {
+        "title": "Intermediate Phase",
+        "duration": "2024-07 to 2024-12",
+        "description": "Dove into web development, built my first full-stack application, learned databases and backend systems.",
+        "keyMoment": "First deployed app live on the internet. The feeling of users interacting with something I built."
+      },
+      "phase3": {
+        "title": "Advanced Phase",
+        "duration": "2025-01 to present",
+        "description": "Exploring ML, system design, open source contributions, and building AI-powered systems.",
+        "keyMoment": "Realized that the future is about combining multiple domains—code, AI, design, data."
+      }
+    }
+  },
+  "skills": [
+    {
+      "id": "python",
+      "name": "Python",
+      "category": "language",
+      "proficiency": 92,
+      "yearsExperience": 2.5,
+      "description": "Primary language for backend, data science, and ML projects",
+      "tags": [
+        "backend",
+        "ml",
+        "data-science"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "fastapi",
+        "flask",
+        "pytorch",
+        "scikit-learn",
+        "pandas",
+        "numpy",
+        "langchain",
+        "generative-ai",
+        "tensorflow"
+      ],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "javascript",
+      "name": "JavaScript",
+      "category": "language",
+      "proficiency": 88,
+      "yearsExperience": 3,
+      "description": "Core language for web development and interactive systems",
+      "tags": [
+        "frontend",
+        "web",
+        "interactive"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "typescript",
+        "react",
+        "next.js",
+        "express",
+        "three-js",
+        "d3-js",
+        "mongodb",
+        "socket-io"
+      ],
+      "proficiencyLevel": "Expert"
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "category": "framework",
+      "proficiency": 85,
+      "yearsExperience": 2.5,
+      "description": "Frontend library for building interactive UIs",
+      "tags": [
+        "frontend",
+        "web",
+        "interactive"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "next.js",
+        "tailwind-css"
+      ],
+      "proficiencyLevel": "Advanced"
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "category": "language",
+      "proficiency": 80,
+      "yearsExperience": 1.5,
+      "description": "Typed JavaScript for larger projects",
+      "tags": [
+        "frontend",
+        "backend",
+        "type-safety"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "next.js",
+        "express"
+      ],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "d3-js",
+      "name": "D3.js",
+      "category": "library",
+      "proficiency": 78,
+      "yearsExperience": 1,
+      "description": "Data visualization and force-directed graphs",
+      "tags": [
+        "visualization",
+        "data",
+        "interactive"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "three-js",
+      "name": "Three.js",
+      "category": "library",
+      "proficiency": 65,
+      "yearsExperience": 0.3,
+      "description": "3D graphics with WebGL",
+      "tags": [
+        "3d",
+        "graphics",
+        "webgl"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Beginner"
+    },
+    {
+      "id": "fastapi",
+      "name": "FastAPI",
+      "category": "framework",
+      "proficiency": 80,
+      "yearsExperience": 1.5,
+      "description": "Modern Python web framework with async support",
+      "tags": [
+        "backend",
+        "api",
+        "python"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Advanced"
+    },
+    {
+      "id": "tensorflow",
+      "name": "TensorFlow",
+      "category": "library",
+      "proficiency": 70,
+      "yearsExperience": 1,
+      "description": "Machine learning framework",
+      "tags": [
+        "ml",
+        "deep-learning"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "category": "tool",
+      "proficiency": 75,
+      "yearsExperience": 1.5,
+      "description": "Containerization for consistent deployments",
+      "tags": [
+        "devops",
+        "deployment"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "git"
+      ],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "git",
+      "name": "Git",
+      "category": "tool",
+      "proficiency": 93,
+      "yearsExperience": 3,
+      "description": "Version control and collaboration",
+      "tags": [
+        "devops",
+        "collaboration"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Expert"
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "category": "tool",
+      "proficiency": 80,
+      "yearsExperience": 2,
+      "description": "Relational database management",
+      "tags": [
+        "database",
+        "backend"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Advanced"
+    },
+    {
+      "id": "mongodb",
+      "name": "MongoDB",
+      "category": "tool",
+      "proficiency": 50,
+      "yearsExperience": 1,
+      "description": "NoSQL database",
+      "tags": [
+        "database",
+        "backend"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "c",
+      "name": "C Language",
+      "category": "language",
+      "proficiency": 75,
+      "yearsExperience": 2,
+      "description": "Foundational programming language for algorithms and systems",
+      "tags": [
+        "programming",
+        "dsa"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Advanced"
+    },
+    {
+      "id": "redis",
+      "name": "Redis",
+      "category": "framework",
+      "proficiency": 45,
+      "yearsExperience": 1,
+      "description": "Caching framework for webapps and full-stack applications",
+      "tags": [
+        "caching"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "python",
+        "javascript"
+      ],
+      "proficiencyLevel": "Beginner"
+    },
+    {
+      "id": "langchain",
+      "name": "Langchain",
+      "category": "framework",
+      "proficiency": 45,
+      "yearsExperience": 1,
+      "description": "Framework for Agentic AI applications",
+      "tags": [
+        "agents",
+        "ai"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "generative-ai"
+      ],
+      "proficiencyLevel": "Beginner"
+    },
+    {
+      "id": "next.js",
+      "name": "Next.js",
+      "category": "framework",
+      "proficiency": 65,
+      "yearsExperience": 1,
+      "description": "React-based framework with routing and SSR capabilities",
+      "tags": [
+        "ui",
+        "frontend"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "java",
+      "name": "Java",
+      "category": "language",
+      "proficiency": 85,
+      "yearsExperience": 2,
+      "description": "Strong object-oriented language for enterprise applications",
+      "tags": [
+        "backend",
+        "oop",
+        "enterprise"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "spring-boot",
+        "postgresql"
+      ],
+      "proficiencyLevel": "Advanced"
+    },
+    {
+      "id": "spring-boot",
+      "name": "Spring Boot",
+      "category": "framework",
+      "proficiency": 80,
+      "yearsExperience": 1.5,
+      "description": "Java framework for microservices and API development",
+      "tags": [
+        "backend",
+        "api",
+        "framework"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "pytorch",
+      "name": "PyTorch",
+      "category": "library",
+      "proficiency": 82,
+      "yearsExperience": 1.5,
+      "description": "Deep learning framework for training and inference",
+      "tags": [
+        "ml",
+        "deep-learning",
+        "ai"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "scikit-learn",
+        "numpy",
+        "tensorflow"
+      ],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "scikit-learn",
+      "name": "Scikit-Learn",
+      "category": "library",
+      "proficiency": 85,
+      "yearsExperience": 2,
+      "description": "Machine learning library in Python for modeling and prediction",
+      "tags": [
+        "ml",
+        "data-science"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "numpy",
+        "pandas",
+        "tensorflow"
+      ],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "pandas",
+      "name": "Pandas",
+      "category": "library",
+      "proficiency": 88,
+      "yearsExperience": 2,
+      "description": "Data manipulation and analysis library in Python",
+      "tags": [
+        "data-science",
+        "analytics"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "numpy"
+      ],
+      "proficiencyLevel": "Advanced"
+    },
+    {
+      "id": "numpy",
+      "name": "NumPy",
+      "category": "library",
+      "proficiency": 90,
+      "yearsExperience": 2.5,
+      "description": "Scientific computing and array operations in Python",
+      "tags": [
+        "data-science",
+        "math"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Advanced"
+    },
+    {
+      "id": "flask",
+      "name": "Flask",
+      "category": "framework",
+      "proficiency": 85,
+      "yearsExperience": 2,
+      "description": "Lightweight Python web framework for microservices and API gateways",
+      "tags": [
+        "backend",
+        "api",
+        "python"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Advanced"
+    },
+    {
+      "id": "express",
+      "name": "Express.js",
+      "category": "framework",
+      "proficiency": 82,
+      "yearsExperience": 2,
+      "description": "Node.js web application framework for API design",
+      "tags": [
+        "backend",
+        "javascript",
+        "node"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "socket-io"
+      ],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "socket-io",
+      "name": "Socket.io",
+      "category": "library",
+      "proficiency": 80,
+      "yearsExperience": 1.5,
+      "description": "Real-time bidirectional event-based communication library",
+      "tags": [
+        "realtime",
+        "websocket",
+        "javascript"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "kafka",
+      "name": "Apache Kafka",
+      "category": "tool",
+      "proficiency": 75,
+      "yearsExperience": 1,
+      "description": "Distributed event streaming platform for high-throughput pipelines",
+      "tags": [
+        "data-engineering",
+        "streaming"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "java",
+        "python"
+      ],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "generative-ai",
+      "name": "Generative AI",
+      "category": "library",
+      "proficiency": 85,
+      "yearsExperience": 1.5,
+      "description": "Integrating Large Language Models and Generative APIs",
+      "tags": [
+        "ai",
+        "llm",
+        "rag"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "tailwind-css",
+      "name": "Tailwind CSS",
+      "category": "tool",
+      "proficiency": 90,
+      "yearsExperience": 2,
+      "description": "Utility-first CSS framework for rapid UI styling",
+      "tags": [
+        "frontend",
+        "css",
+        "styling"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [],
+      "proficiencyLevel": "Advanced"
+    }
+  ],
+  "projects": [
+    {
+      "id": "platonis-ai",
+      "title": "Platonis.AI",
+      "subtitle": "Campus placement preparation platform for engineering students",
+      "shortDescription": "A comprehensive AI-powered preparation suite featuring local RAG-based aptitude quizzes, real-time code evaluation, and adaptive mock interviews.",
+      "longDescription": "Platonis.AI is a secure, local-first placement preparation platform built to help CS students practice and analyze their readiness across core domains. It integrates local vector indexing, fine-tuned LLM execution, adaptive speech-to-text scoring, and custom machine learning predictors—all operating entirely on free/local resources.",
+      "category": "web",
+      "subcategories": [],
+      "status": "in-progress",
+      "featured": true,
+      "complexity": "high",
+      "startDate": "2025-01-22",
+      "endDate": null,
+      "duration": "5.5 months",
+      "role": "Solo Developer",
+      "teamSize": 1,
+      "skillsUsed": [
+        "fastapi",
+        "next.js",
+        "postgresql",
+        "redis",
+        "python",
+        "typescript",
+        "generative-ai",
+        "pytorch",
+        "scikit-learn",
+        "tailwind-css"
+      ],
+      "description": {
+        "challenge": "Building a multi-modal assessment system that is secure, local-first, and costs zero in marginal inference fees.",
+        "solution": "Integrated Groq/Cerebras APIs for high-speed LLaMA 3.1 inference, combined with local SentenceTransformers for embeddings and ChromaDB for vector retrieval.",
+        "approach": "Built modular FastAPI routers, SQLAlchemy ORM mappings, Next.js page routers, and local Python pipelines for speech scoring and computer vision."
+      },
+      "keyLearnings": [
+        "RAG architecture design and chunking optimization",
+        "Designing fallbacks and resiliency for free-tier LLM endpoints",
+        "Integrating real-time speech and face analysis models in browser",
+        "Managing relational states across multiple async agents"
+      ],
+      "metrics": {},
+      "links": {
+        "github": "https://github.com/shreeshasn/Platonis.AI"
+      },
+      "media": {
+        "thumbnail": "",
+        "images": []
+      },
+      "techStack": {
+        "frontend": [],
+        "backend": [],
+        "deployment": []
+      },
+      "hideFromPublic": false,
+      "archived": false
+    },
+    {
+      "id": "noetis-ai",
+      "title": "Noetis.AI",
+      "subtitle": "Cognitive Drift Intelligence Platform for education",
+      "shortDescription": "Traces student conceptual understanding over time to detect knowledge decay using dynamic Graph Neural Networks and Transformers.",
+      "longDescription": "Noetis.AI analyzes massive student interaction logs (trained on CC BY-NC 4.0 EdNet dataset) to map and forecast how mastery fluctuates. Instead of predicting binary next-question correctness, it evaluates cognitive drift across interconnected concepts and alerts instructors with SHAP explainability and What-If simulation.",
+      "category": "ml",
+      "subcategories": [],
+      "status": "completed",
+      "featured": true,
+      "complexity": "extreme",
+      "startDate": "2026-05-25",
+      "endDate": "2026-05-31",
+      "duration": "0.5 months",
+      "role": "Solo Developer",
+      "teamSize": 1,
+      "skillsUsed": [
+        "python",
+        "react",
+        "fastapi",
+        "pytorch",
+        "scikit-learn",
+        "pandas",
+        "numpy",
+        "docker",
+        "d3-js"
+      ],
+      "description": {
+        "challenge": "Detecting multi-concept knowledge decay patterns from sparse and imbalanced log sequences.",
+        "solution": "Combined SAINT-based Transformer embeddings, GraphSAGE GNN mastery propagation, and an XGBoost drift classifier with TreeSHAP feature attribution.",
+        "approach": "Processed 131M+ EdNet rows, engineered rolling-window drift targets, built a custom PyTorch GNN, and served it via a FastAPI server connected to a React D3 dashboard."
+      },
+      "keyLearnings": [
+        "Processing large-scale time-series interaction logs (Pandas/Dask)",
+        "Formulating and training Graph Neural Networks on conceptual graphs",
+        "Interpreting tree ensemble models using SHAP attribution matrices",
+        "Creating interactive force-directed D3 visualizations for model insights"
+      ],
+      "metrics": {},
+      "links": {
+        "github": "https://github.com/shreeshasn/Noetis.AI"
+      },
+      "media": {
+        "thumbnail": "",
+        "images": []
+      },
+      "techStack": {
+        "frontend": [],
+        "backend": [],
+        "deployment": []
+      },
+      "hideFromPublic": false,
+      "archived": false
+    },
+    {
+      "id": "audita",
+      "title": "Audita",
+      "subtitle": "Automated GitHub repository health and quality auditor",
+      "shortDescription": "Evaluates any public GitHub repository across 7 weighted categories to return a normalized score out of 100 with a letter grade.",
+      "longDescription": "Audita is a high-performance repository scanner that parses documentation, CI/CD pipeline configs, release cadence, and code quality elements via GitHub REST API v3. It features Caffeine-based memory caching, low latency, PDF report export, and a custom cold-start UI.",
+      "category": "web",
+      "subcategories": [],
+      "status": "completed",
+      "featured": true,
+      "complexity": "medium",
+      "startDate": "2026-02-28",
+      "endDate": "2026-03-15",
+      "duration": "0.5 months",
+      "role": "Solo Developer",
+      "teamSize": 1,
+      "skillsUsed": [
+        "java",
+        "spring-boot",
+        "javascript",
+        "docker",
+        "git"
+      ],
+      "description": {
+        "challenge": "Fetching multiple repository pages from GitHub without hitting severe rate limits or causing long server wait times.",
+        "solution": "Implemented parallel WebFlux WebClient requests coupled with an in-memory Caffeine cache (15min TTL, LRU eviction).",
+        "approach": "Built a Spring Boot backend, a synchronous WebFlux ingestion pipeline, and an optimized single-page vanilla JS frontend for speed."
+      },
+      "keyLearnings": [
+        "Caching patterns and key eviction policies in Spring Boot",
+        "Writing reactive, non-blocking HTTP requests with WebClient",
+        "Creating lightweight frontends with pure HTML/CSS/JS and Marked.js",
+        "JVM container tuning for resource-constrained free hosting environments"
+      ],
+      "metrics": {},
+      "links": {
+        "github": "https://github.com/shreeshasn/Audita",
+        "liveDemo": "https://audita-nkss.onrender.com"
+      },
+      "media": {
+        "thumbnail": "",
+        "images": []
+      },
+      "techStack": {
+        "frontend": [],
+        "backend": [],
+        "deployment": []
+      },
+      "hideFromPublic": false,
+      "archived": false
+    },
+    {
+      "id": "vox",
+      "title": "VoxGlobal AI",
+      "subtitle": "Event-driven cinematic dubbing & localization platform",
+      "shortDescription": "Coordinates decoupled video separation, translation, and forensic watermarking services using Redis Streams.",
+      "longDescription": "VoxGlobal AI is a cinematic-grade localization workflow monorepo. It features Next.js portals, a FastAPI API gateway, multiple custom Python audio/NLP pipeline workers, PostgreSQL with pgvector embeddings, and Redis Streams. Coordinated inside anArts Technologies internship.",
+      "category": "web",
+      "subcategories": [],
+      "status": "in-progress",
+      "featured": true,
+      "complexity": "extreme",
+      "startDate": "2026-05-15",
+      "endDate": null,
+      "duration": "Ongoing (Internship)",
+      "role": "Team Leader",
+      "teamSize": 3,
+      "skillsUsed": [
+        "next.js",
+        "fastapi",
+        "python",
+        "typescript",
+        "postgresql",
+        "redis",
+        "docker",
+        "git"
+      ],
+      "description": {
+        "challenge": "Managing multi-stage audio processing tasks concurrently across multiple distributed microservices.",
+        "solution": "Built an event-driven pub/sub architecture utilizing Redis Streams for message brokers and PostgreSQL pgvector for speaker profiles.",
+        "approach": "Led architecture design, set up the Docker Compose monorepo, wrote API gateway routers, and optimized WavLM biometric verification."
+      },
+      "keyLearnings": [
+        "Microservice orchestration and monorepo management (PNPM)",
+        "Event-driven programming with Redis Streams",
+        "Database vectors (pgvector) and speaker identification",
+        "CI/CD automated release schedules"
+      ],
+      "metrics": {},
+      "links": {
+        "github": "https://github.com/shreeshasn/VoxGlobal_AI"
+      },
+      "media": {
+        "thumbnail": "",
+        "images": []
+      },
+      "techStack": {
+        "frontend": [],
+        "backend": [],
+        "deployment": []
+      },
+      "hideFromPublic": false,
+      "archived": false
+    },
+    {
+      "id": "vanguard",
+      "title": "VANGUARD-HFT v2",
+      "subtitle": "Real-time high-frequency trading manipulation detection system",
+      "shortDescription": "Processes high-throughput Kafka streams to detect market anomalies using Graph Neural Networks and BiLSTMs.",
+      "longDescription": "VANGUARD-HFT is an AI market surveillance tool. It monitors L2 order books in real-time, processes incoming events via Kafka, executes heuristic and deep learning models (GraphSAGE + BiLSTM), and alerts operators with full SHAP transparency.",
+      "category": "ml",
+      "subcategories": [],
+      "status": "completed",
+      "featured": true,
+      "complexity": "high",
+      "startDate": "2026-04-15",
+      "endDate": "2026-04-16",
+      "duration": "1 days (Hackathon)",
+      "role": "Core Contributor",
+      "teamSize": 3,
+      "skillsUsed": [
+        "react",
+        "fastapi",
+        "python",
+        "pytorch",
+        "scikit-learn",
+        "redis",
+        "postgresql",
+        "docker",
+        "kafka"
+      ],
+      "description": {
+        "challenge": "Detecting complex patterns like spoofing and layering within sub-millisecond market events.",
+        "solution": "Engineered a dual-stage filter: heuristics drop safe events, while PyTorch GNN/BiLSTM models inspect suspicious nodes.",
+        "approach": "Contributed the React injector UI, fixed and optimized the ML model boundaries, and resolved logic in the detection engine."
+      },
+      "keyLearnings": [
+        "Apache Kafka topic partitioning and event consumption",
+        "Model compilation for low-latency deep learning inference",
+        "Interpreting real-time sequence attention outputs",
+        "Handling race conditions in multi-account coordination detection"
+      ],
+      "metrics": {},
+      "links": {
+        "github": "https://github.com/shreeshasn/Vanguard-HFT"
+      },
+      "media": {
+        "thumbnail": "",
+        "images": []
+      },
+      "techStack": {
+        "frontend": [],
+        "backend": [],
+        "deployment": []
+      },
+      "hideFromPublic": false,
+      "archived": false
+    },
+    {
+      "id": "algoscale",
+      "title": "AlgoScale",
+      "subtitle": "AI-powered algorithmic complexity and cost analyzer",
+      "shortDescription": "Analyzes Python source code using Abstract Syntax Trees and Scikit-Learn to predict Big-O runtime and execution metrics.",
+      "longDescription": "AlgoScale extracts structural features from code snippets using Abstract Syntax Trees (AST) and uses trained RandomForest/GradientBoosting estimators to categorize code into 15 complexity classes and estimate runtime performance.",
+      "category": "ml",
+      "subcategories": [],
+      "status": "completed",
+      "featured": false,
+      "complexity": "medium",
+      "startDate": "2026-05-06",
+      "endDate": "2026-05-07",
+      "duration": "1 Week",
+      "role": "Solo Developer",
+      "teamSize": 1,
+      "skillsUsed": [
+        "react",
+        "fastapi",
+        "python",
+        "scikit-learn",
+        "pandas",
+        "numpy",
+        "tailwind-css"
+      ],
+      "description": {
+        "challenge": "Mapping arbitrary source code text to numerical complexity metrics without execution sandbox risks.",
+        "solution": "Constructed an AST parser to extract 18 code signature features, feeding into classification and regression ensembles.",
+        "approach": "Built AST analysis pipelines, trained ensembles on 150k generated code rows, and created a Monaco-based React UI."
+      },
+      "keyLearnings": [
+        "Abstract Syntax Tree traversal and node inspection (Python `ast`)",
+        "Synthesizing large, balanced datasets for ML classifier training",
+        "Integrating Monaco Editor with custom token rules in React"
+      ],
+      "metrics": {},
+      "links": {
+        "github": "https://github.com/shreeshasn/AlgoScale"
+      },
+      "media": {
+        "thumbnail": "",
+        "images": []
+      },
+      "techStack": {
+        "frontend": [],
+        "backend": [],
+        "deployment": []
+      },
+      "hideFromPublic": false,
+      "archived": false
+    },
+    {
+      "id": "nexuserp",
+      "title": "NexusERP",
+      "subtitle": "Mini project management and ERP system",
+      "shortDescription": "A MERN stack project management application featuring Kanban boards, team management, task comments, and Socket.io notifications.",
+      "longDescription": "NexusERP is a comprehensive business workflow platform. It separates control across Admin, Manager, and Developer roles, enabling granular tracking of task lifecycle, comments, time-logging, and real-time alerts.",
+      "category": "web",
+      "subcategories": [],
+      "status": "completed",
+      "featured": false,
+      "complexity": "medium",
+      "startDate": "2026-04-24",
+      "endDate": "2026-04-26",
+      "duration": "1 Week",
+      "role": "Solo Developer",
+      "teamSize": 1,
+      "skillsUsed": [
+        "react",
+        "mongodb",
+        "javascript",
+        "docker",
+        "socket-io",
+        "express"
+      ],
+      "description": {
+        "challenge": "Designing a synchronized task workflow with real-time updates and strict role validation.",
+        "solution": "Utilized JWT role authorization middleware on Node.js/Express and integrated Socket.io rooms for instant change notifications.",
+        "approach": "Created database structures with Mongoose, set up state management context, and drew Kanban board components."
+      },
+      "keyLearnings": [
+        "Role-based access control (RBAC) modeling in Express",
+        "Handling real-time pub/sub notifications over socket boundaries",
+        "Structuring database indices for low-latency project lookups"
+      ],
+      "metrics": {},
+      "links": {
+        "github": "https://github.com/shreeshasn/NexusERP",
+        "liveDemo": "https://nexus-erp-rose.vercel.app"
+      },
+      "media": {
+        "thumbnail": "",
+        "images": []
+      },
+      "techStack": {
+        "frontend": [],
+        "backend": [],
+        "deployment": []
+      },
+      "hideFromPublic": false,
+      "archived": false
+    },
+    {
+      "id": "the-devils-advocate",
+      "title": "The Devil's Advocate",
+      "subtitle": "Autonomous multi-agent AI debate consensus system",
+      "shortDescription": "Features three autonomous Gemini-powered agents debating user prompts to eliminate LLM hallucinations.",
+      "longDescription": "The Devil's Advocate implements a multi-agent debate design pattern. Agent A (The Visionary) proposes solutions, Agent B (The Inquisitor) finds logical cracks and critique, and Agent C (The Arbiter) resolves disputes to yield fact-checked final verdicts.",
+      "category": "web",
+      "subcategories": [],
+      "status": "completed",
+      "featured": false,
+      "complexity": "medium",
+      "startDate": "2026-02-10",
+      "endDate": "2026-02-26",
+      "duration": "2 Weeks",
+      "role": "Solo Developer",
+      "teamSize": 1,
+      "skillsUsed": [
+        "react",
+        "python",
+        "generative-ai",
+        "flask"
+      ],
+      "description": {
+        "challenge": "Guiding LLM agents through structured multi-turn debates without collapsing into infinite loops or agreement bias.",
+        "solution": "Implemented strict API message parsing, dynamic prompt injection, and sequential state machines.",
+        "approach": "Constructed a Flask server wrapping the Google GenAI SDK and connected a React UI with custom debate animations."
+      },
+      "keyLearnings": [
+        "Multi-agent architecture design and context history management",
+        "Handling rate limits and exceptions from LLM providers",
+        "Animating state changes for asynchronous processes in React"
+      ],
+      "metrics": {},
+      "links": {
+        "github": "https://github.com/shreeshasn/The-Devil-s-Advocate"
+      },
+      "media": {
+        "thumbnail": "",
+        "images": []
+      },
+      "techStack": {
+        "frontend": [],
+        "backend": [],
+        "deployment": []
+      },
+      "hideFromPublic": false,
+      "archived": false
+    },
+    {
+      "id": "turtlegraphics",
+      "title": "Logo Turtle Compiler",
+      "subtitle": "Tokenizer, parser, and SVG generator for Logo programming language",
+      "shortDescription": "Translates Logo turtle commands into vector graphics using a custom compilation pipeline in Python.",
+      "longDescription": "Logo Turtle Compiler implements the standard phases of compilation (lexing, parsing, interpreting, and code generation) to turn Logo commands (like repeat, forward, right) into visual drawings.",
+      "category": "web",
+      "subcategories": [],
+      "status": "completed",
+      "featured": false,
+      "complexity": "medium",
+      "startDate": "2026-05-03",
+      "endDate": "2026-05-04",
+      "duration": "2 days",
+      "role": "Solo Developer",
+      "teamSize": 1,
+      "skillsUsed": [
+        "python",
+        "javascript",
+        "flask"
+      ],
+      "description": {
+        "challenge": "Designing a parser that supports nested loops and translates them into an AST.",
+        "solution": "Built a custom recursive descent parser that constructs nested program nodes and an interpreter that updates a vector canvas.",
+        "approach": "Coded standard lexical rules, custom parser tokens, a turtle state interpreter, and a Flask server."
+      },
+      "keyLearnings": [
+        "Grammar rules modeling and parsing loops",
+        "Transforming 2D coordinates and angles to scalable SVG markup",
+        "Building simple compiler interfaces"
+      ],
+      "metrics": {},
+      "links": {
+        "github": "https://github.com/shreeshasn/Logo-Turtle-Graphics-Compiler"
+      },
+      "media": {
+        "thumbnail": "",
+        "images": []
+      },
+      "techStack": {
+        "frontend": [],
+        "backend": [],
+        "deployment": []
+      },
+      "hideFromPublic": false,
+      "archived": false
+    },
+    {
+      "id": "portfolio-website",
+      "title": "Reality Layer Portfolio",
+      "subtitle": "AI-native futuristic portfolio with particle systems",
+      "shortDescription": "An interactive, data-driven portfolio that reorganizes based on visitor intent using Canvas, D3.js, and AI.",
+      "longDescription": "This portfolio website represents the reality layer itself. It maps out skills, credentials, and projects using dynamic 3D elements, canvas particle physics, soundscapes, and CLI-to-GUI toggle states.",
+      "category": "web",
+      "subcategories": [],
+      "status": "in-progress",
+      "featured": true,
+      "complexity": "extreme",
+      "startDate": "2026-05-26",
+      "endDate": null,
+      "duration": "Ongoing",
+      "role": "Solo Developer",
+      "teamSize": 1,
+      "skillsUsed": [
+        "react",
+        "typescript",
+        "d3-js",
+        "three-js",
+        "tailwind-css"
+      ],
+      "description": {
+        "challenge": "Creating an immersive, high-performance interface that seamlessly blends Terminal-like controls with 3D visualizations.",
+        "solution": "Built React custom components, coupled with Three.js/Fiber for wireframe holograms, and a D3 force simulation.",
+        "approach": "Constructed the theme variables, canvas render loops, audio manager nodes, and custom React hooks."
+      },
+      "keyLearnings": [
+        "WebGL canvas initialization and optimization in React",
+        "Synchronizing synthesized audio context to cursor events",
+        "Building state engines for command suggestion dropdowns"
+      ],
+      "metrics": {},
+      "links": {
+        "github": "https://github.com/shreeshasn/shreeshasn.github.io"
+      },
+      "media": {
+        "thumbnail": "",
+        "images": []
+      },
+      "techStack": {
+        "frontend": [],
+        "backend": [],
+        "deployment": []
+      },
+      "hideFromPublic": false,
+      "archived": false
+    }
+  ],
+  "workExperience": [
+    {
+      "id": "we001",
+      "title": "AI/ML Intern ",
+      "company": "Artsy Technologies",
+      "location": "Mysuru, KA",
+      "period": "May 2026 – Present",
+      "type": "internship",
+      "highlights": [
+        "Building microservices",
+        "Using HLD for the architecture",
+        "Implementing CI/CD pipelines for automated deployments"
+      ],
+      "skillsUsed": [
+        "python",
+        "fastapi",
+        "docker",
+        "react"
+      ],
+      "relatedProjectId": "vox",
+      "hideFromPublic": false
+    }
+  ],
+  "education": [
+    {
+      "id": "degree",
+      "tier": "degree",
+      "institution": "Vidyavardhaka College Of Engineering",
+      "degree": "B.E",
+      "field": "Computer Science and Engineering",
+      "location": "Mysuru, KA",
+      "startDate": "2023-09",
+      "endDate": "2027-06",
+      "grade": "9.5 CGPA",
+      "highlights": [],
+      "courses": [
+        "Data Structures and Algorithms",
+        "Operating Systems",
+        "Computer Networks",
+        "Machine Learning",
+        "Database Management Systems"
+      ],
+      "hideFromPublic": false
+    },
+    {
+      "id": "pu",
+      "tier": "pu_college",
+      "institution": "Sadvidya Composite PU College",
+      "field": "PCMC",
+      "location": "Mysuru, KA",
+      "startDate": "2021-06",
+      "endDate": "2023-05",
+      "grade": "96%",
+      "highlights": [],
+      "courses": [
+        "CPP",
+        "OOPs",
+        "Database Management Systems",
+        "SQL"
+      ],
+      "hideFromPublic": false
+    },
+    {
+      "id": "school",
+      "tier": "high_school",
+      "institution": "Ideal Jawa Rotary School",
+      "field": "General",
+      "location": "Mysuru, KA",
+      "startDate": "",
+      "endDate": "2021-05",
+      "grade": "100%",
+      "highlights": [
+        "State Topper"
+      ],
+      "courses": [],
+      "hideFromPublic": false
+    }
+  ],
+  "certifications": [
+    {
+      "id": "cert001",
+      "name": "Identity Security for AI age ",
+      "issuer": "Saviynt",
+      "issueDate": "2026-02-21",
+      "credentialUrl": "https://certification.saviynt.com/ced8938e-7e8f-4104-bdf5-f765218c21ff",
+      "credentialId": "175161050",
+      "icon": "BookOpen",
+      "hideFromPublic": false
+    },
+    {
+      "id": "cert002",
+      "name": "Google AI Professional Certificate",
+      "issuer": "Coursera",
+      "issueDate": "2026-04-30",
+      "credentialUrl": "www.coursera.org/account/accomplishments/professional-cert/DDZ45XY3AD4Y",
+      "credentialId": "DDZ45XY3AD4Y",
+      "icon": "Award",
+      "hideFromPublic": false
+    },
+    {
+      "id": "cert003",
+      "name": "Human Computer Interaction",
+      "issuer": "NPTEL",
+      "issueDate": "2026-05-15",
+      "credentialUrl": "https://nptel.ac.in/noc/E_Certificate/NOC26CS70S26150096405041582",
+      "credentialId": "NOC26CS70S26150096405041582",
+      "icon": "Award",
+      "hideFromPublic": false
+    },
+    {
+      "id": "cert004",
+      "name": "IBM - Introduction to Artificial Intelligence (AI)",
+      "issuer": "Coursera",
+      "issueDate": "2025-10-25",
+      "credentialUrl": "www.coursera.org/account/accomplishments/verify/MU7EW7O51WHK",
+      "credentialId": "MU7EW7O51WHK",
+      "icon": "BookOpen",
+      "hideFromPublic": false
+    }
+  ],
+  "achievements": [
+    {
+      "id": "ach001",
+      "title": "XLR8 Ideathon Runners-Up",
+      "description": "Secured Second place for an innovative Sustainability Project.",
+      "date": "2025-09-24",
+      "importance": "high",
+      "icon": "Award",
+      "hideFromPublic": false
+    },
+    {
+      "id": "ach002",
+      "title": "Leetcode 50 Days Badge 2026",
+      "description": "Solving problems on 50+ Days on Leetcode in 2026.",
+      "date": "2026-05-12",
+      "importance": "medium",
+      "icon": "Star",
+      "hideFromPublic": false
+    }
+  ],
+  "extracurricular": [
+    {
+      "id": "extra001",
+      "title": "Event Coordinator",
+      "organization": "DevCom Week",
+      "role": "Core Member",
+      "period": "2026",
+      "description": "Organized 3+ workshops, mentored 50+ students in competitive programming and Devops.",
+      "icon": "Users",
+      "hideFromPublic": false
+    },
+    {
+      "id": "extra002",
+      "title": "Blood Donator",
+      "organization": "NSS Organization",
+      "role": "Volunteer",
+      "period": "2023-2026",
+      "description": "Donated blood twice a year at various Blood donation camps.",
+      "icon": "Calendar",
+      "hideFromPublic": false
+    }
+  ],
+  "cliQuotes": [
+    "Real developers don't need buttons.",
+    "sudo make me a portfolio.",
+    "There's no place like 127.0.0.1.",
+    "It works on my terminal.",
+    "Have you tried turning the CLI off and on again?",
+    "GUI is just CLI with extra steps.",
+    "I don't always test my code, but when I do, I do it in production.",
+    "In a world full of GUIs, be a CLI.",
+    "The command line is mightier than the mouse.",
+    "/* TODO: write a funnier quote */",
+    "cat /dev/portfolio | grep awesome",
+    "chmod 777 my_career"
+  ],
+  "resume": {
+    "driveUrl": "https://drive.google.com/file/d/PLACEHOLDER/view",
+    "fileName": "Look_At_My_Resume.pdf"
+  },
+  "contact": {
+    "email": "shreeshasnekkar81@gmail.com",
+    "phone": "+91-7619482685",
+    "linkedIn": "https://linkedin.com/in/shreesha-s-nekkar",
+    "github": "https://github.com/shreeshasn",
+    "twitter": "https://twitter.com/",
+    "codepen": "https://codepen.io/",
+    "website": "https://shreeshasn.github.io/",
+    "formspreeUrl": "https://formspree.io/f/xlgvkvyb",
+    "timezone": "IST (UTC+5:30)"
+  },
+  "social": {
+    "github": {
+      "url": "https://github.com/shreeshasn",
+      "username": "shreeshasn",
+      "displayName": "GitHub",
+      "icon": "github",
+      "followers": 10,
+      "public": true
+    },
+    "linkedin": {
+      "url": "https://linkedin.com/in/shreesha-s-nekkar",
+      "username": "Shreesha S Nekkar",
+      "displayName": "LinkedIn",
+      "icon": "linkedin",
+      "followers": 300,
+      "public": true
+    },
+    "twitter": {
+      "url": "https://x.com/shreeshasn",
+      "username": "shreeshasn",
+      "displayName": "Twitter",
+      "icon": "twitter",
+      "followers": -1,
+      "public": true
+    },
+    "codepen": {
+      "url": "https://leetcode.com/u/Shreesha81/",
+      "username": "Shreesha81",
+      "displayName": "LeetCode",
+      "icon": "codepen",
+      "public": true
+    }
+  },
+  "theme": {
+    "colorScheme": "light",
+    "colors": {
+      "primary": "#201d1d",
+      "onPrimary": "#fdfcfc",
+      "ink": "#201d1d",
+      "inkDeep": "#0f0000",
+      "charcoal": "#302c2c",
+      "body": "#424245",
+      "mute": "#646262",
+      "stone": "#6e6e73",
+      "ash": "#9a9898",
+      "canvas": "#fdfcfc",
+      "surfaceSoft": "#f8f7f7",
+      "surfaceCard": "#f1eeee",
+      "surfaceDark": "#201d1d",
+      "surfaceDarkElevated": "#302c2c",
+      "hairline": "rgba(15,0,0,0.12)",
+      "hairlineStrong": "#646262",
+      "onDark": "#fdfcfc",
+      "onDarkMute": "#9a9898",
+      "accent": "#007aff",
+      "accentHover": "#0056b3",
+      "accentActive": "#004085",
+      "warning": "#ff9f0a",
+      "warningHover": "#cc7f08",
+      "warningActive": "#995f06",
+      "danger": "#ff3b30",
+      "dangerHover": "#d70015",
+      "dangerActive": "#a50011",
+      "success": "#30d158"
+    },
+    "particles": {
+      "count": 500,
+      "speed": 1.5,
+      "size": 2,
+      "opacity": 0.6
+    },
+    "animations": {
+      "speed": "normal",
+      "enableGlitch": false,
+      "enableTrails": true,
+      "particlePhysics": true
+    }
+  },
+  "featureFlags": {
+    "enableParticles": true,
+    "enableProjectHolograms": true,
+    "enableSound": true,
+    "enableDarkMode": true,
+    "enableAnimations": true,
+    "enableMetrics": true,
+    "maintenanceMode": false
+  },
+  "seo": {
+    "robots": "index, follow",
+    "language": "en",
+    "viewport": "width=device-width, initial-scale=1.0",
+    "themeColor": "#201d1d",
+    "structuredData": {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "givenName": "Shreesha",
+      "familyName": "S Nekkar",
+      "jobTitle": "CS Student",
+      "url": "https://shreeshasn.github.io"
+    }
+  }
+}

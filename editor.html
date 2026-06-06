@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PORTFOLIO DATA EDITOR</title>
+  <style>
+    :root {
+      --color-canvas: #fdfcfc;
+      --color-ink: #121111;
+      --color-surface-soft: #f8f7f7;
+      --color-accent: #007aff;
+      --color-success: #30d158;
+      --color-danger: #ff3b30;
+      --color-hairline: rgba(15, 0, 0, 0.12);
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-canvas: #121111;
+        --color-ink: #fdfcfc;
+        --color-surface-soft: #1d1b1d;
+        --color-hairline: rgba(255, 255, 255, 0.12);
+      }
+    }
+
+    body {
+      background-color: var(--color-canvas);
+      color: var(--color-ink);
+      font-family: var(--font-mono);
+      padding: 20px;
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 0 0 10px 0;
+      border-bottom: 2px solid var(--color-ink);
+      padding-bottom: 5px;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      color: var(--color-accent);
+      border-bottom: 1px solid var(--color-hairline);
+      margin-top: 25px;
+      padding-bottom: 2px;
+    }
+
+    .intro {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin-bottom: 20px;
+    }
+
+    .form-section {
+      background-color: var(--color-surface-soft);
+      border: 1px solid var(--color-hairline);
+      padding: 15px;
+      margin-bottom: 20px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 15px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 0.75rem;
+      font-weight: bold;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      color: var(--color-ink);
+      opacity: 0.9;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="email"],
+    select,
+    textarea {
+      background-color: var(--color-canvas);
+      color: var(--color-ink);
+      border: 1px solid var(--color-hairline);
+      padding: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 1.5px solid var(--color-accent);
+    }
+
+    /* List item containers for dynamic arrays */
+    .array-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 12px;
+    }
+
+    .array-item {
+      border: 1px dashed var(--color-ink);
+      padding: 12px;
+      position: relative;
+      background-color: var(--color-canvas);
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      border-bottom: 1px dotted var(--color-hairline);
+      padding-bottom: 4px;
+    }
+
+    .item-title {
+      font-weight: bold;
+      font-size: 0.8rem;
+      color: var(--color-accent);
+    }
+
+    .btn-delete {
+      background-color: var(--color-danger);
+      color: white;
+      border: none;
+      padding: 2px 8px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    .btn-add {
+      background-color: var(--color-ink);
+      color: var(--color-canvas);
+      border: 1px solid var(--color-ink);
+      padding: 6px 12px;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: bold;
+      cursor: pointer;
+      align-self: flex-start;
+      margin-top: 5px;
+    }
+
+    .btn-add:hover {
+      background-color: var(--color-accent);
+      border-color: var(--color-accent);
+      color: white;
+    }
+
+    .footer-actions {
+      position: sticky;
+      bottom: 0;
+      background-color: var(--color-canvas);
+      padding: 15px 0;
+      border-top: 2px solid var(--color-ink);
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .btn-save {
+      background-color: var(--color-accent);
+      color: white;
+      border: 1px solid var(--color-accent);
+      padding: 10px 20px;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .btn-save:hover {
+      opacity: 0.9;
+    }
+
+    .status-banner {
+      padding: 10px;
+      margin-bottom: 20px;
+      font-size: 0.85rem;
+      display: none;
+      border-left: 4px solid transparent;
+    }
+
+    .success {
+      display: block;
+      background-color: rgba(48, 209, 88, 0.1);
+      border-color: var(--color-success);
+      color: var(--color-success);
+    }
+
+    .error {
+      display: block;
+      background-color: rgba(255, 59, 48, 0.1);
+      border-color: var(--color-danger);
+      color: var(--color-danger);
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .checkbox-row input {
+      width: auto;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div style="font-size: 0.8rem; margin-bottom: 15px;">
+      <a href="/explore" style="color: var(--color-accent); text-decoration: none;">← Return to Website</a>
+    </div>
+
+    <h1>[ SSN.SYS // PORTFOLIO DATA EDITOR ]</h1>
+    <p class="intro">// 100% manual-JSON-free profile editing. Fill input fields below and click save. The portfolio
+      hot-reloads instantly.</p>
+
+    <div id="statusBanner" class="status-banner"></div>
+
+    <form id="mainForm" onsubmit="event.preventDefault();">
+
+      <!-- 1. META -->
+      <h2>1. Site Information & Metadata</h2>
+      <div class="form-section">
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Browser Tab Title</label>
+            <input type="text" id="meta_title" required>
+          </div>
+          <div class="form-group">
+            <label>Author / Owner Name</label>
+            <input type="text" id="meta_author" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Meta Description (SEO)</label>
+          <input type="text" id="meta_description" required>
+        </div>
+        <div class="grid-3">
+          <div class="form-group">
+            <label>Favicon Path</label>
+            <input type="text" id="meta_favicon" required>
+          </div>
+          <div class="form-group">
+            <label>Site Canonical URL</label>
+            <input type="text" id="meta_canonicalUrl">
+          </div>
+          <div class="form-group">
+            <label>Keywords (comma-separated)</label>
+            <input type="text" id="meta_keywords">
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. IDENTITY -->
+      <h2>2. Owner Identity & Contact Details</h2>
+      <div class="form-section">
+        <div class="grid-3">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="identity_fullName" required>
+          </div>
+          <div class="form-group">
+            <label>Job Title</label>
+            <input type="text" id="identity_title" required>
+          </div>
+          <div class="form-group">
+            <label>Avatar Initials</label>
+            <input type="text" id="identity_avatarInitials" required>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Tagline</label>
+            <input type="text" id="identity_tagline" required>
+          </div>
+          <div class="form-group">
+            <label>Subtitle</label>
+            <input type="text" id="identity_subtitle" required>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="identity_email" required>
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="text" id="identity_phone">
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" id="identity_city" required>
+          </div>
+          <div class="form-group">
+            <label>Country</label>
+            <input type="text" id="identity_country" required>
+          </div>
+          <div class="form-group">
+            <label>Timezone</label>
+            <input type="text" id="identity_timezone">
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. BIO & PHILOSOPHY -->
+      <h2>3. Profile Biography</h2>
+      <div class="form-section">
+        <div class="form-group">
+          <label>Short Bio</label>
+          <textarea id="bio_shortBio" rows="2" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Long Bio</label>
+          <textarea id="bio_longBio" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Core Philosophy</label>
+          <input type="text" id="bio_philosophy" required>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Current Focus</label>
+            <input type="text" id="bio_currentFocus">
+          </div>
+          <div class="form-group">
+            <label>Future Aspiration</label>
+            <input type="text" id="bio_futureAspiration">
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. NARRATIVE PHASES -->
+      <h2>4. Development Phases (Timeline Narrative)</h2>
+      <div class="form-section">
+        <h3>Phase 1: Fundamentals</h3>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="bio_narrative_phase1_title">
+          </div>
+          <div class="form-group">
+            <label>Duration</label>
+            <input type="text" id="bio_narrative_phase1_duration">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" id="bio_narrative_phase1_description">
+        </div>
+        <div class="form-group">
+          <label>Key Moment</label>
+          <input type="text" id="bio_narrative_phase1_keyMoment">
+        </div>
+
+        <h3>Phase 2: Intermediate</h3>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="bio_narrative_phase2_title">
+          </div>
+          <div class="form-group">
+            <label>Duration</label>
+            <input type="text" id="bio_narrative_phase2_duration">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" id="bio_narrative_phase2_description">
+        </div>
+        <div class="form-group">
+          <label>Key Moment</label>
+          <input type="text" id="bio_narrative_phase2_keyMoment">
+        </div>
+
+        <h3>Phase 3: Advanced</h3>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Title</label>
+            <input type="text" id="bio_narrative_phase3_title">
+          </div>
+          <div class="form-group">
+            <label>Duration</label>
+            <input type="text" id="bio_narrative_phase3_duration">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" id="bio_narrative_phase3_description">
+        </div>
+        <div class="form-group">
+          <label>Key Moment</label>
+          <input type="text" id="bio_narrative_phase3_keyMoment">
+        </div>
+      </div>
+
+      <!-- 5. FEATURE FLAGS -->
+      <h2>5. Feature Toggles & Controls</h2>
+      <div class="form-section">
+        <div class="grid-3" style="gap: 10px;">
+          <div class="checkbox-row">
+            <input type="checkbox" id="flags_enableParticles">
+            <label for="flags_enableParticles">Particles Background</label>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="flags_enableProjectHolograms">
+            <label for="flags_enableProjectHolograms">Project Holograms</label>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="flags_enableSound">
+            <label for="flags_enableSound">Audio Engine</label>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="flags_enableDarkMode">
+            <label for="flags_enableDarkMode">Dark Mode Switch</label>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="flags_enableAnimations">
+            <label for="flags_enableAnimations">Transitions</label>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="flags_enableMetrics">
+            <label for="flags_enableMetrics">Measured Metrics</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. CONTACT & SOCIALS -->
+      <h2>6. Contact & Social Channels</h2>
+      <div class="form-section">
+        <div class="grid-3">
+          <div class="form-group">
+            <label>Contact Email</label>
+            <input type="email" id="contact_email" required>
+          </div>
+          <div class="form-group">
+            <label>Contact Phone</label>
+            <input type="text" id="contact_phone">
+          </div>
+          <div class="form-group">
+            <label>Timezone Label</label>
+            <input type="text" id="contact_timezone">
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="form-group">
+            <label>GitHub Profile URL</label>
+            <input type="text" id="contact_github">
+          </div>
+          <div class="form-group">
+            <label>LinkedIn Profile URL</label>
+            <input type="text" id="contact_linkedIn">
+          </div>
+          <div class="form-group">
+            <label>Twitter Profile URL</label>
+            <input type="text" id="contact_twitter">
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="form-group">
+            <label>CodePen Profile URL</label>
+            <input type="text" id="contact_codepen">
+          </div>
+          <div class="form-group">
+            <label>Personal Website URL</label>
+            <input type="text" id="contact_website">
+          </div>
+          <div class="form-group">
+            <label>FormSpree Form ID/URL</label>
+            <input type="text" id="contact_formspreeUrl">
+          </div>
+        </div>
+
+        <h3 style="margin-top: 25px; border-bottom: 1px dotted var(--color-hairline); padding-bottom: 5px;">Resume Settings</h3>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Resume Drive URL</label>
+            <input type="text" id="resume_driveUrl" required>
+          </div>
+          <div class="form-group">
+            <label>Resume File Name</label>
+            <input type="text" id="resume_fileName" required>
+          </div>
+        </div>
+
+        <h3 style="margin-top: 25px; border-bottom: 1px dotted var(--color-hairline); padding-bottom: 5px;">Social Media Details (Renders in Footers & Contact Page)</h3>
+        
+        <!-- GitHub Social -->
+        <h4 style="margin: 15px 0 5px 0; color: var(--color-accent);">GitHub Account Details</h4>
+        <div class="grid-3">
+          <div class="form-group">
+            <label>Social URL</label>
+            <input type="text" id="social_github_url" required>
+          </div>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="social_github_username" required>
+          </div>
+          <div class="form-group">
+            <label>Display Name</label>
+            <input type="text" id="social_github_displayName" required>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="form-group">
+            <label>Icon Identifier</label>
+            <input type="text" id="social_github_icon" required>
+          </div>
+          <div class="form-group">
+            <label>Followers Count</label>
+            <input type="number" id="social_github_followers">
+          </div>
+          <div class="checkbox-row" style="margin-top: 25px;">
+            <input type="checkbox" id="social_github_public">
+            <label for="social_github_public">Show on Public UI</label>
+          </div>
+        </div>
+
+        <!-- LinkedIn Social -->
+        <h4 style="margin: 15px 0 5px 0; color: var(--color-accent);">LinkedIn Account Details</h4>
+        <div class="grid-3">
+          <div class="form-group">
+            <label>Social URL</label>
+            <input type="text" id="social_linkedin_url" required>
+          </div>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="social_linkedin_username" required>
+          </div>
+          <div class="form-group">
+            <label>Display Name</label>
+            <input type="text" id="social_linkedin_displayName" required>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="form-group">
+            <label>Icon Identifier</label>
+            <input type="text" id="social_linkedin_icon" required>
+          </div>
+          <div class="form-group">
+            <label>Followers Count</label>
+            <input type="number" id="social_linkedin_followers">
+          </div>
+          <div class="checkbox-row" style="margin-top: 25px;">
+            <input type="checkbox" id="social_linkedin_public">
+            <label for="social_linkedin_public">Show on Public UI</label>
+          </div>
+        </div>
+
+        <!-- Twitter Social -->
+        <h4 style="margin: 15px 0 5px 0; color: var(--color-accent);">Twitter Account Details</h4>
+        <div class="grid-3">
+          <div class="form-group">
+            <label>Social URL</label>
+            <input type="text" id="social_twitter_url" required>
+          </div>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="social_twitter_username" required>
+          </div>
+          <div class="form-group">
+            <label>Display Name</label>
+            <input type="text" id="social_twitter_displayName" required>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="form-group">
+            <label>Icon Identifier</label>
+            <input type="text" id="social_twitter_icon" required>
+          </div>
+          <div class="form-group">
+            <label>Followers Count</label>
+            <input type="number" id="social_twitter_followers">
+          </div>
+          <div class="checkbox-row" style="margin-top: 25px;">
+            <input type="checkbox" id="social_twitter_public">
+            <label for="social_twitter_public">Show on Public UI</label>
+          </div>
+        </div>
+
+        <!-- CodePen Social -->
+        <h4 style="margin: 15px 0 5px 0; color: var(--color-accent);">CodePen Account Details</h4>
+        <div class="grid-3">
+          <div class="form-group">
+            <label>Social URL</label>
+            <input type="text" id="social_codepen_url" required>
+          </div>
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" id="social_codepen_username" required>
+          </div>
+          <div class="form-group">
+            <label>Display Name</label>
+            <input type="text" id="social_codepen_displayName" required>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="form-group">
+            <label>Icon Identifier</label>
+            <input type="text" id="social_codepen_icon" required>
+          </div>
+          <div class="checkbox-row" style="margin-top: 25px;">
+            <input type="checkbox" id="social_codepen_public">
+            <label for="social_codepen_public">Show on Public UI</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. DYNAMIC SKILLS ARRAY -->
+      <h2>7. Interactive Skills Node Graph</h2>
+      <div class="form-section">
+        <div id="skillsList" class="array-container"></div>
+        <button type="button" class="btn-add" onclick="addSkill()">+ Add Skill Node</button>
+      </div>
+
+      <!-- 8. DYNAMIC PROJECTS ARRAY -->
+      <h2>8. Featured Engineering Projects</h2>
+      <div class="form-section">
+        <div id="projectsList" class="array-container"></div>
+        <button type="button" class="btn-add" onclick="addProject()">+ Add Project</button>
+      </div>
+
+      <!-- 9. DYNAMIC WORK EXPERIENCE ARRAY -->
+      <h2>9. Work History & Career</h2>
+      <div class="form-section">
+        <div id="workList" class="array-container"></div>
+        <button type="button" class="btn-add" onclick="addWork()">+ Add Work Experience</button>
+      </div>
+
+      <!-- 10. DYNAMIC EDUCATION ARRAY -->
+      <h2>10. Education & Degrees</h2>
+      <div class="form-section">
+        <div id="educationList" class="array-container"></div>
+        <button type="button" class="btn-add" onclick="addEducation()">+ Add Education Item</button>
+      </div>
+
+      <!-- 11. DYNAMIC CERTIFICATIONS ARRAY -->
+      <h2>11. Professional Certifications</h2>
+      <div class="form-section">
+        <div id="certificationsList" class="array-container"></div>
+        <button type="button" class="btn-add" onclick="addCertification()">+ Add Certification</button>
+      </div>
+
+      <!-- 12. DYNAMIC ACHIEVEMENTS ARRAY -->
+      <h2>12. Key Achievements</h2>
+      <div class="form-section">
+        <div id="achievementsList" class="array-container"></div>
+        <button type="button" class="btn-add" onclick="addAchievement()">+ Add Achievement</button>
+      </div>
+
+      <!-- 13. DYNAMIC EXTRACURRICULAR ARRAY -->
+      <h2>13. Extracurriculars</h2>
+      <div class="form-section">
+        <div id="extraList" class="array-container"></div>
+        <button type="button" class="btn-add" onclick="addExtracurricular()">+ Add Extracurricular</button>
+      </div>
+
+      <!-- 14. CLI QUOTES -->
+      <h2>14. CLI Quotes Database</h2>
+      <div class="form-section">
+        <div id="quotesList" class="array-container"></div>
+        <button type="button" class="btn-add" onclick="addQuote()">+ Add CLI Quote</button>
+      </div>
+
+      <!-- SUBMIT ACTIONS -->
+      <div class="footer-actions">
+        <button type="button" id="saveBtn" class="btn-save">Save All Settings</button>
+        <span style="font-size: 0.75rem; opacity: 0.7;">// Submits form updates directly to local portfolio.json</span>
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    let rawData = {};
+
+    const statusBanner = document.getElementById('statusBanner');
+    const saveBtn = document.getElementById('saveBtn');
+
+    function showStatus(msg, isError = false) {
+      statusBanner.textContent = msg;
+      statusBanner.className = 'status-banner ' + (isError ? 'error' : 'success');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Load local JSON dataset
+    async function loadData() {
+      try {
+        const res = await fetch('/api/portfolio');
+        if (!res.ok) throw new Error('Failed to retrieve local portfolio.json file');
+        rawData = await res.json();
+
+        // Populate Meta
+        document.getElementById('meta_title').value = rawData.meta.title || '';
+        document.getElementById('meta_author').value = rawData.meta.author || '';
+        document.getElementById('meta_description').value = rawData.meta.description || '';
+        document.getElementById('meta_favicon').value = rawData.meta.favicon || '';
+        document.getElementById('meta_canonicalUrl').value = rawData.meta.canonicalUrl || '';
+        document.getElementById('meta_keywords').value = (rawData.meta.keywords || []).join(', ');
+
+        // Populate Identity
+        document.getElementById('identity_fullName').value = rawData.identity.fullName || '';
+        document.getElementById('identity_title').value = rawData.identity.title || '';
+        document.getElementById('identity_avatarInitials').value = rawData.identity.avatar.initials || '';
+        document.getElementById('identity_tagline').value = rawData.identity.tagline || '';
+        document.getElementById('identity_subtitle').value = rawData.identity.subtitle || '';
+        document.getElementById('identity_email').value = rawData.identity.email || '';
+        document.getElementById('identity_phone').value = rawData.identity.phone || '';
+        document.getElementById('identity_city').value = rawData.identity.location.city || '';
+        document.getElementById('identity_country').value = rawData.identity.location.country || '';
+        document.getElementById('identity_timezone').value = rawData.identity.location.timezone || '';
+
+        // Populate Bio
+        document.getElementById('bio_shortBio').value = rawData.bio.shortBio || '';
+        document.getElementById('bio_longBio').value = rawData.bio.longBio || '';
+        document.getElementById('bio_philosophy').value = rawData.bio.philosophy || '';
+        document.getElementById('bio_currentFocus').value = rawData.bio.currentFocus || '';
+        document.getElementById('bio_futureAspiration').value = rawData.bio.futureAspiration || '';
+
+        // Populate Narrative Phases
+        document.getElementById('bio_narrative_phase1_title').value = rawData.bio.narrative?.phase1?.title || '';
+        document.getElementById('bio_narrative_phase1_duration').value = rawData.bio.narrative?.phase1?.duration || '';
+        document.getElementById('bio_narrative_phase1_description').value = rawData.bio.narrative?.phase1?.description || '';
+        document.getElementById('bio_narrative_phase1_keyMoment').value = rawData.bio.narrative?.phase1?.keyMoment || '';
+
+        document.getElementById('bio_narrative_phase2_title').value = rawData.bio.narrative?.phase2?.title || '';
+        document.getElementById('bio_narrative_phase2_duration').value = rawData.bio.narrative?.phase2?.duration || '';
+        document.getElementById('bio_narrative_phase2_description').value = rawData.bio.narrative?.phase2?.description || '';
+        document.getElementById('bio_narrative_phase2_keyMoment').value = rawData.bio.narrative?.phase2?.keyMoment || '';
+
+        document.getElementById('bio_narrative_phase3_title').value = rawData.bio.narrative?.phase3?.title || '';
+        document.getElementById('bio_narrative_phase3_duration').value = rawData.bio.narrative?.phase3?.duration || '';
+        document.getElementById('bio_narrative_phase3_description').value = rawData.bio.narrative?.phase3?.description || '';
+        document.getElementById('bio_narrative_phase3_keyMoment').value = rawData.bio.narrative?.phase3?.keyMoment || '';
+
+        // Populate flags
+        document.getElementById('flags_enableParticles').checked = !!rawData.featureFlags.enableParticles;
+        document.getElementById('flags_enableProjectHolograms').checked = !!rawData.featureFlags.enableProjectHolograms;
+        document.getElementById('flags_enableSound').checked = !!rawData.featureFlags.enableSound;
+        document.getElementById('flags_enableDarkMode').checked = !!rawData.featureFlags.enableDarkMode;
+        document.getElementById('flags_enableAnimations').checked = !!rawData.featureFlags.enableAnimations;
+        document.getElementById('flags_enableMetrics').checked = !!rawData.featureFlags.enableMetrics;
+
+        // Populate Contact
+        document.getElementById('contact_email').value = rawData.contact?.email || '';
+        document.getElementById('contact_phone').value = rawData.contact?.phone || '';
+        document.getElementById('contact_linkedIn').value = rawData.contact?.linkedIn || '';
+        document.getElementById('contact_github').value = rawData.contact?.github || '';
+        document.getElementById('contact_twitter').value = rawData.contact?.twitter || '';
+        document.getElementById('contact_codepen').value = rawData.contact?.codepen || '';
+        document.getElementById('contact_website').value = rawData.contact?.website || '';
+        document.getElementById('contact_formspreeUrl').value = rawData.contact?.formspreeUrl || '';
+        document.getElementById('contact_timezone').value = rawData.contact?.timezone || '';
+
+        // Populate Resume
+        document.getElementById('resume_driveUrl').value = rawData.resume?.driveUrl || '';
+        document.getElementById('resume_fileName').value = rawData.resume?.fileName || '';
+
+        // Populate Social
+        document.getElementById('social_github_url').value = rawData.social?.github?.url || '';
+        document.getElementById('social_github_username').value = rawData.social?.github?.username || '';
+        document.getElementById('social_github_displayName').value = rawData.social?.github?.displayName || '';
+        document.getElementById('social_github_icon').value = rawData.social?.github?.icon || '';
+        document.getElementById('social_github_followers').value = rawData.social?.github?.followers || 0;
+        document.getElementById('social_github_public').checked = rawData.social?.github?.public !== false;
+
+        document.getElementById('social_linkedin_url').value = rawData.social?.linkedin?.url || '';
+        document.getElementById('social_linkedin_username').value = rawData.social?.linkedin?.username || '';
+        document.getElementById('social_linkedin_displayName').value = rawData.social?.linkedin?.displayName || '';
+        document.getElementById('social_linkedin_icon').value = rawData.social?.linkedin?.icon || '';
+        document.getElementById('social_linkedin_followers').value = rawData.social?.linkedin?.followers || 0;
+        document.getElementById('social_linkedin_public').checked = rawData.social?.linkedin?.public !== false;
+
+        document.getElementById('social_twitter_url').value = rawData.social?.twitter?.url || '';
+        document.getElementById('social_twitter_username').value = rawData.social?.twitter?.username || '';
+        document.getElementById('social_twitter_displayName').value = rawData.social?.twitter?.displayName || '';
+        document.getElementById('social_twitter_icon').value = rawData.social?.twitter?.icon || '';
+        document.getElementById('social_twitter_followers').value = rawData.social?.twitter?.followers || 0;
+        document.getElementById('social_twitter_public').checked = rawData.social?.twitter?.public !== false;
+
+        document.getElementById('social_codepen_url').value = rawData.social?.codepen?.url || '';
+        document.getElementById('social_codepen_username').value = rawData.social?.codepen?.username || '';
+        document.getElementById('social_codepen_displayName').value = rawData.social?.codepen?.displayName || '';
+        document.getElementById('social_codepen_icon').value = rawData.social?.codepen?.icon || '';
+        document.getElementById('social_codepen_public').checked = rawData.social?.codepen?.public !== false;
+
+        // Populate dynamic arrays
+        renderSkills(rawData.skills || []);
+        renderProjects(rawData.projects || []);
+        renderWork(rawData.workExperience || []);
+        renderEducation(rawData.education || []);
+        renderCertifications(rawData.certifications || []);
+        renderAchievements(rawData.achievements || []);
+        renderExtracurricular(rawData.extracurricular || []);
+        renderQuotes(rawData.cliQuotes || []);
+
+      } catch (e) {
+        showStatus('Error loading data: ' + e.message, true);
+      }
+    }
+
+    // Render Dynamic Arrays
+    function renderSkills(skills) {
+      const container = document.getElementById('skillsList');
+      container.innerHTML = '';
+      skills.forEach((s, idx) => {
+        container.appendChild(createSkillItem(s, idx));
+      });
+    }
+
+    function createSkillItem(skill = {}, idx) {
+      const div = document.createElement('div');
+      div.className = 'array-item';
+      div.innerHTML = `
+      <div class="item-header">
+        <span class="item-title">Skill Node #${idx + 1}</span>
+        <button type="button" class="btn-delete" onclick="removeItem('skillsList', ${idx})">Delete</button>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Unique ID</label>
+          <input type="text" class="skill-id" value="${skill.id || ''}" placeholder="e.g. react" required>
+        </div>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" class="skill-name" value="${skill.name || ''}" placeholder="e.g. React" required>
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select class="skill-category">
+            <option value="language" ${skill.category === 'language' ? 'selected' : ''}>Language</option>
+            <option value="framework" ${skill.category === 'framework' ? 'selected' : ''}>Framework</option>
+            <option value="library" ${skill.category === 'library' ? 'selected' : ''}>Library</option>
+            <option value="tool" ${skill.category === 'tool' ? 'selected' : ''}>Tool</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Proficiency (0 - 100)</label>
+          <input type="number" class="skill-proficiency" value="${skill.proficiency || 50}" min="0" max="100" required>
+        </div>
+        <div class="form-group">
+          <label>Years Experience</label>
+          <input type="text" class="skill-years" value="${skill.yearsExperience || 0}">
+        </div>
+        <div class="form-group">
+          <label>Proficiency Level</label>
+          <input type="text" class="skill-level" value="${skill.proficiencyLevel || ''}" placeholder="e.g. Expert">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" class="skill-desc" value="${skill.description || ''}">
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Tags (comma-separated)</label>
+          <input type="text" class="skill-tags" value="${(skill.tags || []).join(', ')}">
+        </div>
+        <div class="form-group">
+          <label>Related Skills (comma-separated IDs)</label>
+          <input type="text" class="skill-related" value="${(skill.relatedSkills || []).join(', ')}" placeholder="e.g. react, typescript">
+        </div>
+        <div class="form-group checkbox-row" style="margin-top: 25px;">
+          <input type="checkbox" class="skill-hide" ${skill.hideFromPublic ? 'checked' : ''}>
+          <label>Hide From Public UI</label>
+        </div>
+      </div>
+    `;
+      return div;
+    }
+
+    function addSkill() {
+      const list = document.getElementById('skillsList');
+      list.appendChild(createSkillItem({}, list.children.length));
+    }
+
+    // Projects
+    function renderProjects(projects) {
+      const container = document.getElementById('projectsList');
+      container.innerHTML = '';
+      projects.forEach((p, idx) => {
+        container.appendChild(createProjectItem(p, idx));
+      });
+    }
+
+    function createProjectItem(proj = {}, idx) {
+      const div = document.createElement('div');
+      div.className = 'array-item';
+      div.innerHTML = `
+      <div class="item-header">
+        <span class="item-title">Project Node #${idx + 1}</span>
+        <button type="button" class="btn-delete" onclick="removeItem('projectsList', ${idx})">Delete</button>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Unique ID</label>
+          <input type="text" class="proj-id" value="${proj.id || ''}" placeholder="e.g. todo-app" required>
+        </div>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="proj-title" value="${proj.title || ''}" required>
+        </div>
+        <div class="form-group">
+          <label>Subtitle</label>
+          <input type="text" class="proj-subtitle" value="${proj.subtitle || ''}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Short Description</label>
+        <input type="text" class="proj-short" value="${proj.shortDescription || ''}" required>
+      </div>
+      <div class="form-group">
+        <label>Long Description</label>
+        <textarea class="proj-long" rows="3" required>${proj.longDescription || ''}</textarea>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Category</label>
+          <input type="text" class="proj-cat" value="${proj.category || 'web'}" required>
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select class="proj-status">
+            <option value="completed" ${proj.status === 'completed' ? 'selected' : ''}>completed</option>
+            <option value="in-progress" ${proj.status === 'in-progress' ? 'selected' : ''}>in-progress</option>
+            <option value="archived" ${proj.status === 'archived' ? 'selected' : ''}>archived</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Complexity</label>
+          <select class="proj-complex">
+            <option value="low" ${proj.complexity === 'low' ? 'selected' : ''}>low</option>
+            <option value="medium" ${proj.complexity === 'medium' ? 'selected' : ''}>medium</option>
+            <option value="high" ${proj.complexity === 'high' ? 'selected' : ''}>high</option>
+            <option value="extreme" ${proj.complexity === 'extreme' ? 'selected' : ''}>extreme</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Start Date (YYYY-MM)</label>
+          <input type="text" class="proj-start" value="${proj.startDate || ''}" required>
+        </div>
+        <div class="form-group">
+          <label>End Date (or blank)</label>
+          <input type="text" class="proj-end" value="${proj.endDate || ''}">
+        </div>
+        <div class="form-group">
+          <label>Duration Description</label>
+          <input type="text" class="proj-duration" value="${proj.duration || ''}" placeholder="e.g. 3 months" required>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label>My Role</label>
+          <input type="text" class="proj-role" value="${proj.role || 'Solo Developer'}" required>
+        </div>
+        <div class="form-group">
+          <label>Team Size</label>
+          <input type="number" class="proj-team" value="${proj.teamSize || 1}">
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label>GitHub Link</label>
+          <input type="text" class="proj-git" value="${proj.links?.github || ''}">
+        </div>
+        <div class="form-group">
+          <label>Live Demo Link</label>
+          <input type="text" class="proj-live" value="${proj.links?.liveDemo || ''}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Skills Used (comma-separated IDs)</label>
+        <input type="text" class="proj-skills" value="${(proj.skillsUsed || []).join(', ')}" placeholder="e.g. react, typescript">
+      </div>
+      
+      <!-- Problems & Solutions -->
+      <div class="grid-3">
+        <div class="form-group">
+          <label>The Challenge</label>
+          <textarea class="proj-challenge" rows="2">${proj.description?.challenge || ''}</textarea>
+        </div>
+        <div class="form-group">
+          <label>The Solution</label>
+          <textarea class="proj-solution" rows="2">${proj.description?.solution || ''}</textarea>
+        </div>
+        <div class="form-group">
+          <label>The Approach</label>
+          <textarea class="proj-approach" rows="2">${proj.description?.approach || ''}</textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Key Learnings (one per line)</label>
+        <textarea class="proj-learnings" rows="2">${(proj.keyLearnings || []).join('\n')}</textarea>
+      </div>
+
+      <div class="grid-3" style="padding-top: 10px;">
+        <div class="checkbox-row">
+          <input type="checkbox" class="proj-feat" ${proj.featured ? 'checked' : ''}>
+          <label>Featured Project</label>
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" class="proj-hide" ${proj.hideFromPublic ? 'checked' : ''}>
+          <label>Hide From Public</label>
+        </div>
+        <div class="checkbox-row">
+          <input type="checkbox" class="proj-archived" ${proj.archived ? 'checked' : ''}>
+          <label>Archived Status</label>
+        </div>
+      </div>
+    `;
+      return div;
+    }
+
+    function addProject() {
+      const list = document.getElementById('projectsList');
+      list.appendChild(createProjectItem({}, list.children.length));
+    }
+
+    // Work Experience
+    function renderWork(work) {
+      const container = document.getElementById('workList');
+      container.innerHTML = '';
+      work.forEach((w, idx) => {
+        container.appendChild(createWorkItem(w, idx));
+      });
+    }
+
+    function createWorkItem(item = {}, idx) {
+      const div = document.createElement('div');
+      div.className = 'array-item';
+      div.innerHTML = `
+      <div class="item-header">
+        <span class="item-title">Work Experience #${idx + 1}</span>
+        <button type="button" class="btn-delete" onclick="removeItem('workList', ${idx})">Delete</button>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Unique ID</label>
+          <input type="text" class="work-id" value="${item.id || ''}" placeholder="e.g. job1" required>
+        </div>
+        <div class="form-group">
+          <label>Job Title</label>
+          <input type="text" class="work-title" value="${item.title || ''}" required>
+        </div>
+        <div class="form-group">
+          <label>Company</label>
+          <input type="text" class="work-company" value="${item.company || ''}" required>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" class="work-loc" value="${item.location || ''}">
+        </div>
+        <div class="form-group">
+          <label>Period / Duration</label>
+          <input type="text" class="work-period" value="${item.period || ''}" placeholder="e.g. Jun 2024 - Present" required>
+        </div>
+        <div class="form-group">
+          <label>Type</label>
+          <select class="work-type">
+            <option value="full-time" ${item.type === 'full-time' ? 'selected' : ''}>full-time</option>
+            <option value="internship" ${item.type === 'internship' ? 'selected' : ''}>internship</option>
+            <option value="contract" ${item.type === 'contract' ? 'selected' : ''}>contract</option>
+            <option value="freelance" ${item.type === 'freelance' ? 'selected' : ''}>freelance</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Highlights / Roles (one per line)</label>
+        <textarea class="work-highlights" rows="2">${(item.highlights || []).join('\n')}</textarea>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Skills Used (comma-separated IDs)</label>
+          <input type="text" class="work-skills" value="${(item.skillsUsed || []).join(', ')}">
+        </div>
+        <div class="form-group">
+          <label>Related Project ID (optional link)</label>
+          <input type="text" class="work-related-project" value="${item.relatedProjectId || ''}" placeholder="e.g. vox">
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group checkbox-row" style="margin-top: 10px;">
+          <input type="checkbox" class="work-hide" ${item.hideFromPublic ? 'checked' : ''}>
+          <label>Hide From Public</label>
+        </div>
+      </div>
+    `;
+      return div;
+    }
+
+    function addWork() {
+      const list = document.getElementById('workList');
+      list.appendChild(createWorkItem({}, list.children.length));
+    }
+
+    // Education
+    function renderEducation(edu) {
+      const container = document.getElementById('educationList');
+      container.innerHTML = '';
+      edu.forEach((e, idx) => {
+        container.appendChild(createEducationItem(e, idx));
+      });
+    }
+
+    function createEducationItem(item = {}, idx) {
+      const div = document.createElement('div');
+      div.className = 'array-item';
+      div.innerHTML = `
+      <div class="item-header">
+        <span class="item-title">Education Item #${idx + 1}</span>
+        <button type="button" class="btn-delete" onclick="removeItem('educationList', ${idx})">Delete</button>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Unique ID</label>
+          <input type="text" class="edu-id" value="${item.id || ''}" placeholder="e.g. college" required>
+        </div>
+        <div class="form-group">
+          <label>Tier</label>
+          <select class="edu-tier">
+            <option value="degree" ${item.tier === 'degree' ? 'selected' : ''}>degree</option>
+            <option value="pu_college" ${item.tier === 'pu_college' ? 'selected' : ''}>pu_college</option>
+            <option value="high_school" ${item.tier === 'high_school' ? 'selected' : ''}>high_school</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Institution</label>
+          <input type="text" class="edu-inst" value="${item.institution || ''}" required>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Degree (optional)</label>
+          <input type="text" class="edu-degree" value="${item.degree || ''}">
+        </div>
+        <div class="form-group">
+          <label>Field of Study</label>
+          <input type="text" class="edu-field" value="${item.field || ''}" required>
+        </div>
+        <div class="form-group">
+          <label>Grade achieved</label>
+          <input type="text" class="edu-grade" value="${item.grade || ''}" placeholder="e.g. 8.5 CGPA">
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Start Date</label>
+          <input type="text" class="edu-start" value="${item.startDate || ''}" required>
+        </div>
+        <div class="form-group">
+          <label>End Date</label>
+          <input type="text" class="edu-end" value="${item.endDate || ''}" required>
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" class="edu-loc" value="${item.location || ''}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Highlights (one per line)</label>
+        <textarea class="edu-highlights" rows="2">${(item.highlights || []).join('\n')}</textarea>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Courses (comma-separated)</label>
+          <input type="text" class="edu-courses" value="${(item.courses || []).join(', ')}">
+        </div>
+        <div class="form-group checkbox-row" style="margin-top: 25px;">
+          <input type="checkbox" class="edu-hide" ${item.hideFromPublic ? 'checked' : ''}>
+          <label>Hide From Public</label>
+        </div>
+      </div>
+    `;
+      return div;
+    }
+
+    function addEducation() {
+      const list = document.getElementById('educationList');
+      list.appendChild(createEducationItem({}, list.children.length));
+    }
+
+    // Certifications
+    function renderCertifications(certs) {
+      const container = document.getElementById('certificationsList');
+      container.innerHTML = '';
+      certs.forEach((c, idx) => {
+        container.appendChild(createCertificationItem(c, idx));
+      });
+    }
+
+    function createCertificationItem(item = {}, idx) {
+      const div = document.createElement('div');
+      div.className = 'array-item';
+      div.innerHTML = `
+      <div class="item-header">
+        <span class="item-title">Certification #${idx + 1}</span>
+        <button type="button" class="btn-delete" onclick="removeItem('certificationsList', ${idx})">Delete</button>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Unique ID</label>
+          <input type="text" class="cert-id" value="${item.id || ''}" placeholder="e.g. cert1" required>
+        </div>
+        <div class="form-group">
+          <label>Certificate Name</label>
+          <input type="text" class="cert-name" value="${item.name || ''}" required>
+        </div>
+        <div class="form-group">
+          <label>Issuer</label>
+          <input type="text" class="cert-issuer" value="${item.issuer || ''}" required>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Issue Date (YYYY-MM-DD)</label>
+          <input type="text" class="cert-date" value="${item.issueDate || ''}" required>
+        </div>
+        <div class="form-group">
+          <label>Credential ID</label>
+          <input type="text" class="cert-credId" value="${item.credentialId || ''}">
+        </div>
+        <div class="form-group">
+          <label>Icon</label>
+          <input type="text" class="cert-icon" value="${item.icon || 'Award'}">
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="form-group">
+          <label>Credential Verification URL</label>
+          <input type="text" class="cert-url" value="${item.credentialUrl || ''}">
+        </div>
+        <div class="form-group checkbox-row" style="margin-top: 25px;">
+          <input type="checkbox" class="cert-hide" ${item.hideFromPublic ? 'checked' : ''}>
+          <label>Hide From Public</label>
+        </div>
+      </div>
+    `;
+      return div;
+    }
+
+    function addCertification() {
+      const list = document.getElementById('certificationsList');
+      list.appendChild(createCertificationItem({}, list.children.length));
+    }
+
+    // Achievements
+    function renderAchievements(ach) {
+      const container = document.getElementById('achievementsList');
+      container.innerHTML = '';
+      ach.forEach((a, idx) => {
+        container.appendChild(createAchievementItem(a, idx));
+      });
+    }
+
+    function createAchievementItem(item = {}, idx) {
+      const div = document.createElement('div');
+      div.className = 'array-item';
+      div.innerHTML = `
+      <div class="item-header">
+        <span class="item-title">Achievement #${idx + 1}</span>
+        <button type="button" class="btn-delete" onclick="removeItem('achievementsList', ${idx})">Delete</button>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Unique ID</label>
+          <input type="text" class="ach-id" value="${item.id || ''}" placeholder="e.g. ach1" required>
+        </div>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="ach-title" value="${item.title || ''}" required>
+        </div>
+        <div class="form-group">
+          <label>Date (YYYY-MM-DD)</label>
+          <input type="text" class="ach-date" value="${item.date || ''}" required>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Importance</label>
+          <select class="ach-importance">
+            <option value="normal" ${item.importance === 'normal' ? 'selected' : ''}>normal</option>
+            <option value="medium" ${item.importance === 'medium' ? 'selected' : ''}>medium</option>
+            <option value="high" ${item.importance === 'high' ? 'selected' : ''}>high</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Icon</label>
+          <input type="text" class="ach-icon" value="${item.icon || 'Star'}">
+        </div>
+        <div class="form-group checkbox-row" style="margin-top: 25px;">
+          <input type="checkbox" class="ach-hide" ${item.hideFromPublic ? 'checked' : ''}>
+          <label>Hide From Public</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" class="ach-desc" value="${item.description || ''}" required>
+      </div>
+    `;
+      return div;
+    }
+
+    function addAchievement() {
+      const list = document.getElementById('achievementsList');
+      list.appendChild(createAchievementItem({}, list.children.length));
+    }
+
+    // Extracurricular
+    function renderExtracurricular(extra) {
+      const container = document.getElementById('extraList');
+      container.innerHTML = '';
+      extra.forEach((e, idx) => {
+        container.appendChild(createExtraItem(e, idx));
+      });
+    }
+
+    function createExtraItem(item = {}, idx) {
+      const div = document.createElement('div');
+      div.className = 'array-item';
+      div.innerHTML = `
+      <div class="item-header">
+        <span class="item-title">Extracurricular #${idx + 1}</span>
+        <button type="button" class="btn-delete" onclick="removeItem('extraList', ${idx})">Delete</button>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Unique ID</label>
+          <input type="text" class="extra-id" value="${item.id || ''}" placeholder="e.g. club1" required>
+        </div>
+        <div class="form-group">
+          <label>Title</label>
+          <input type="text" class="extra-title" value="${item.title || ''}" required>
+        </div>
+        <div class="form-group">
+          <label>Organization</label>
+          <input type="text" class="extra-org" value="${item.organization || ''}" required>
+        </div>
+      </div>
+      <div class="grid-3">
+        <div class="form-group">
+          <label>Role</label>
+          <input type="text" class="extra-role" value="${item.role || ''}">
+        </div>
+        <div class="form-group">
+          <label>Period / Duration</label>
+          <input type="text" class="extra-period" value="${item.period || ''}" required>
+        </div>
+        <div class="form-group">
+          <label>Icon</label>
+          <input type="text" class="extra-icon" value="${item.icon || 'Users'}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" class="extra-desc" value="${item.description || ''}" required>
+      </div>
+      <div class="form-group checkbox-row">
+        <input type="checkbox" class="extra-hide" ${item.hideFromPublic ? 'checked' : ''}>
+        <label>Hide From Public</label>
+      </div>
+    `;
+      return div;
+    }
+
+    function addExtracurricular() {
+      const list = document.getElementById('extraList');
+      list.appendChild(createExtraItem({}, list.children.length));
+    }
+
+    // CLI Quotes
+    function renderQuotes(quotes) {
+      const container = document.getElementById('quotesList');
+      container.innerHTML = '';
+      quotes.forEach((q, idx) => {
+        container.appendChild(createQuoteItem(q, idx));
+      });
+    }
+
+    function createQuoteItem(quote = '', idx) {
+      const div = document.createElement('div');
+      div.className = 'array-item';
+      div.style.padding = '8px 12px';
+      div.innerHTML = `
+      <div style="display: flex; gap: 10px; align-items: center;">
+        <span style="font-size: 0.75rem; font-weight: bold; width: 80px;">Quote #${idx + 1}</span>
+        <input type="text" class="quote-text" value="${quote}" style="flex: 1;" placeholder="Type funny quote here..." required>
+        <button type="button" class="btn-delete" onclick="removeItem('quotesList', ${idx})">Delete</button>
+      </div>
+    `;
+      return div;
+    }
+
+    function addQuote() {
+      const list = document.getElementById('quotesList');
+      list.appendChild(createQuoteItem('', list.children.length));
+    }
+
+    // Generic List item delete handler
+    function removeItem(listId, idx) {
+      const list = document.getElementById(listId);
+      list.children[idx].remove();
+
+      // Re-index all children header titles to match
+      Array.from(list.children).forEach((child, index) => {
+        // Re-assign delete button index handler
+        const delBtn = child.querySelector('.btn-delete');
+        if (delBtn) delBtn.setAttribute('onclick', `removeItem('${listId}', ${index})`);
+
+        // Update label index text
+        const titleSpan = child.querySelector('.item-title');
+        if (titleSpan) {
+          const typeText = titleSpan.textContent.split('#')[0];
+          titleSpan.textContent = `${typeText}#${index + 1}`;
+        }
+      });
+    }
+
+    // Gather Forms and Arrays and Save to Local JSON endpoint
+    saveBtn.addEventListener('click', async () => {
+      try {
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Saving Settings...';
+
+        // 1. Gather Basic Meta
+        const meta = {
+          title: document.getElementById('meta_title').value,
+          author: document.getElementById('meta_author').value,
+          description: document.getElementById('meta_description').value,
+          favicon: document.getElementById('meta_favicon').value,
+          canonicalUrl: document.getElementById('meta_canonicalUrl').value,
+          keywords: document.getElementById('meta_keywords').value.split(',').map(s => s.trim()).filter(Boolean),
+          siteUrl: rawData.meta.siteUrl || '',
+          ogImage: rawData.meta.ogImage || '',
+          twitterHandle: rawData.meta.twitterHandle || ''
+        };
+
+        // 2. Gather Identity
+        const identity = {
+          firstName: rawData.identity.firstName || '',
+          lastName: rawData.identity.lastName || '',
+          fullName: document.getElementById('identity_fullName').value,
+          title: document.getElementById('identity_title').value,
+          avatar: {
+            url: rawData.identity.avatar?.url || '',
+            initials: document.getElementById('identity_avatarInitials').value,
+            bgColor: rawData.identity.avatar?.bgColor || ''
+          },
+          tagline: document.getElementById('identity_tagline').value,
+          subtitle: document.getElementById('identity_subtitle').value,
+          email: document.getElementById('identity_email').value,
+          phone: document.getElementById('identity_phone').value,
+          location: {
+            city: document.getElementById('identity_city').value,
+            state: rawData.identity.location?.state || '',
+            country: document.getElementById('identity_country').value,
+            timezone: document.getElementById('identity_timezone').value
+          },
+          pronouns: rawData.identity.pronouns || 'he/him',
+          status: rawData.identity.status || '',
+          statusEmoji: rawData.identity.statusEmoji || ''
+        };
+
+        // 3. Gather Bio
+        const bio = {
+          shortBio: document.getElementById('bio_shortBio').value,
+          longBio: document.getElementById('bio_longBio').value,
+          philosophy: document.getElementById('bio_philosophy').value,
+          currentFocus: document.getElementById('bio_currentFocus').value,
+          futureAspiration: document.getElementById('bio_futureAspiration').value,
+          narrative: {
+            phase1: {
+              title: document.getElementById('bio_narrative_phase1_title').value,
+              duration: document.getElementById('bio_narrative_phase1_duration').value,
+              description: document.getElementById('bio_narrative_phase1_description').value,
+              keyMoment: document.getElementById('bio_narrative_phase1_keyMoment').value
+            },
+            phase2: {
+              title: document.getElementById('bio_narrative_phase2_title').value,
+              duration: document.getElementById('bio_narrative_phase2_duration').value,
+              description: document.getElementById('bio_narrative_phase2_description').value,
+              keyMoment: document.getElementById('bio_narrative_phase2_keyMoment').value
+            },
+            phase3: {
+              title: document.getElementById('bio_narrative_phase3_title').value,
+              duration: document.getElementById('bio_narrative_phase3_duration').value,
+              description: document.getElementById('bio_narrative_phase3_description').value,
+              keyMoment: document.getElementById('bio_narrative_phase3_keyMoment').value
+            }
+          }
+        };
+
+        // 4. Gather Feature Flags
+        const featureFlags = {
+          enableParticles: document.getElementById('flags_enableParticles').checked,
+          enableProjectHolograms: document.getElementById('flags_enableProjectHolograms').checked,
+          enableSound: document.getElementById('flags_enableSound').checked,
+          enableDarkMode: document.getElementById('flags_enableDarkMode').checked,
+          enableAnimations: document.getElementById('flags_enableAnimations').checked,
+          enableMetrics: document.getElementById('flags_enableMetrics').checked,
+          maintenanceMode: !!rawData.featureFlags.maintenanceMode
+        };
+
+        // Gather Contact
+        const contact = {
+          email: document.getElementById('contact_email').value,
+          phone: document.getElementById('contact_phone').value,
+          linkedIn: document.getElementById('contact_linkedIn').value,
+          github: document.getElementById('contact_github').value,
+          twitter: document.getElementById('contact_twitter').value,
+          codepen: document.getElementById('contact_codepen').value,
+          website: document.getElementById('contact_website').value,
+          formspreeUrl: document.getElementById('contact_formspreeUrl').value,
+          timezone: document.getElementById('contact_timezone').value
+        };
+
+        // Gather Resume
+        const resume = {
+          driveUrl: document.getElementById('resume_driveUrl').value,
+          fileName: document.getElementById('resume_fileName').value
+        };
+
+        // Gather Social
+        const social = {
+          github: {
+            url: document.getElementById('social_github_url').value,
+            username: document.getElementById('social_github_username').value,
+            displayName: document.getElementById('social_github_displayName').value,
+            icon: document.getElementById('social_github_icon').value,
+            followers: parseInt(document.getElementById('social_github_followers').value) || 0,
+            public: document.getElementById('social_github_public').checked
+          },
+          linkedin: {
+            url: document.getElementById('social_linkedin_url').value,
+            username: document.getElementById('social_linkedin_username').value,
+            displayName: document.getElementById('social_linkedin_displayName').value,
+            icon: document.getElementById('social_linkedin_icon').value,
+            followers: parseInt(document.getElementById('social_linkedin_followers').value) || 0,
+            public: document.getElementById('social_linkedin_public').checked
+          },
+          twitter: {
+            url: document.getElementById('social_twitter_url').value,
+            username: document.getElementById('social_twitter_username').value,
+            displayName: document.getElementById('social_twitter_displayName').value,
+            icon: document.getElementById('social_twitter_icon').value,
+            followers: parseInt(document.getElementById('social_twitter_followers').value) || 0,
+            public: document.getElementById('social_twitter_public').checked
+          },
+          codepen: {
+            url: document.getElementById('social_codepen_url').value,
+            username: document.getElementById('social_codepen_username').value,
+            displayName: document.getElementById('social_codepen_displayName').value,
+            icon: document.getElementById('social_codepen_icon').value,
+            public: document.getElementById('social_codepen_public').checked
+          }
+        };
+
+        // 5. Gather Dynamic Arrays
+        // Skills
+        const skills = [];
+        document.querySelectorAll('#skillsList .array-item').forEach(el => {
+          skills.push({
+            id: el.querySelector('.skill-id').value,
+            name: el.querySelector('.skill-name').value,
+            category: el.querySelector('.skill-category').value,
+            proficiency: parseInt(el.querySelector('.skill-proficiency').value) || 0,
+            yearsExperience: parseFloat(el.querySelector('.skill-years').value) || 0,
+            description: el.querySelector('.skill-desc').value,
+            tags: el.querySelector('.skill-tags').value.split(',').map(s => s.trim()).filter(Boolean),
+            hideFromPublic: el.querySelector('.skill-hide').checked,
+            relatedSkills: el.querySelector('.skill-related').value.split(',').map(s => s.trim()).filter(Boolean),
+            proficiencyLevel: el.querySelector('.skill-level').value
+          });
+        });
+
+        // Projects
+        const projects = [];
+        document.querySelectorAll('#projectsList .array-item').forEach(el => {
+          projects.push({
+            id: el.querySelector('.proj-id').value,
+            title: el.querySelector('.proj-title').value,
+            subtitle: el.querySelector('.proj-subtitle').value,
+            shortDescription: el.querySelector('.proj-short').value,
+            longDescription: el.querySelector('.proj-long').value,
+            category: el.querySelector('.proj-cat').value,
+            subcategories: [],
+            status: el.querySelector('.proj-status').value,
+            featured: el.querySelector('.proj-feat').checked,
+            complexity: el.querySelector('.proj-complex').value,
+            startDate: el.querySelector('.proj-start').value,
+            endDate: el.querySelector('.proj-end').value || null,
+            duration: el.querySelector('.proj-duration').value,
+            role: el.querySelector('.proj-role').value,
+            teamSize: parseInt(el.querySelector('.proj-team').value) || 1,
+            skillsUsed: el.querySelector('.proj-skills').value.split(',').map(s => s.trim()).filter(Boolean),
+            description: {
+              challenge: el.querySelector('.proj-challenge').value,
+              solution: el.querySelector('.proj-solution').value,
+              approach: el.querySelector('.proj-approach').value
+            },
+            keyLearnings: el.querySelector('.proj-learnings').value.split('\n').map(s => s.trim()).filter(Boolean),
+            metrics: {},
+            links: {
+              github: el.querySelector('.proj-git').value || undefined,
+              liveDemo: el.querySelector('.proj-live').value || undefined
+            },
+            media: {
+              thumbnail: '',
+              images: []
+            },
+            techStack: {
+              frontend: [],
+              backend: [],
+              deployment: []
+            },
+            hideFromPublic: el.querySelector('.proj-hide').checked,
+            archived: el.querySelector('.proj-archived').checked
+          });
+        });
+
+        // Work Experience
+        const workExperience = [];
+        document.querySelectorAll('#workList .array-item').forEach(el => {
+          workExperience.push({
+            id: el.querySelector('.work-id').value,
+            title: el.querySelector('.work-title').value,
+            company: el.querySelector('.work-company').value,
+            location: el.querySelector('.work-loc').value,
+            period: el.querySelector('.work-period').value,
+            type: el.querySelector('.work-type').value,
+            highlights: el.querySelector('.work-highlights').value.split('\n').map(s => s.trim()).filter(Boolean),
+            skillsUsed: el.querySelector('.work-skills').value.split(',').map(s => s.trim()).filter(Boolean),
+            relatedProjectId: el.querySelector('.work-related-project').value.trim() || undefined,
+            hideFromPublic: el.querySelector('.work-hide').checked
+          });
+        });
+
+        // Education
+        const education = [];
+        document.querySelectorAll('#educationList .array-item').forEach(el => {
+          education.push({
+            id: el.querySelector('.edu-id').value,
+            tier: el.querySelector('.edu-tier').value,
+            institution: el.querySelector('.edu-inst').value,
+            degree: el.querySelector('.edu-degree').value || undefined,
+            field: el.querySelector('.edu-field').value,
+            location: el.querySelector('.edu-loc').value,
+            startDate: el.querySelector('.edu-start').value,
+            endDate: el.querySelector('.edu-end').value,
+            grade: el.querySelector('.edu-grade').value,
+            highlights: el.querySelector('.edu-highlights').value.split('\n').map(s => s.trim()).filter(Boolean),
+            courses: el.querySelector('.edu-courses').value.split(',').map(s => s.trim()).filter(Boolean),
+            hideFromPublic: el.querySelector('.edu-hide').checked
+          });
+        });
+
+        // Certifications
+        const certifications = [];
+        document.querySelectorAll('#certificationsList .array-item').forEach(el => {
+          certifications.push({
+            id: el.querySelector('.cert-id').value,
+            name: el.querySelector('.cert-name').value,
+            issuer: el.querySelector('.cert-issuer').value,
+            issueDate: el.querySelector('.cert-date').value,
+            credentialUrl: el.querySelector('.cert-url').value,
+            credentialId: el.querySelector('.cert-credId').value || undefined,
+            icon: el.querySelector('.cert-icon').value,
+            hideFromPublic: el.querySelector('.cert-hide').checked
+          });
+        });
+
+        // Achievements
+        const achievements = [];
+        document.querySelectorAll('#achievementsList .array-item').forEach(el => {
+          achievements.push({
+            id: el.querySelector('.ach-id').value,
+            title: el.querySelector('.ach-title').value,
+            description: el.querySelector('.ach-desc').value,
+            date: el.querySelector('.ach-date').value,
+            importance: el.querySelector('.ach-importance').value,
+            icon: el.querySelector('.ach-icon').value,
+            hideFromPublic: el.querySelector('.ach-hide').checked
+          });
+        });
+
+        // Extracurriculars
+        const extracurricular = [];
+        document.querySelectorAll('#extraList .array-item').forEach(el => {
+          extracurricular.push({
+            id: el.querySelector('.extra-id').value,
+            title: el.querySelector('.extra-title').value,
+            organization: el.querySelector('.extra-org').value,
+            role: el.querySelector('.extra-role').value,
+            period: el.querySelector('.extra-period').value,
+            description: el.querySelector('.extra-desc').value,
+            icon: el.querySelector('.extra-icon').value,
+            hideFromPublic: el.querySelector('.extra-hide').checked
+          });
+        });
+
+        // Quotes
+        const cliQuotes = [];
+        document.querySelectorAll('#quotesList .array-item').forEach(el => {
+          cliQuotes.push(el.querySelector('.quote-text').value);
+        });
+
+        // Assemble full schema compliant JSON
+        const fullMergedData = {
+          version: rawData.version || "2.0",
+          lastUpdated: new Date().toISOString(),
+          meta,
+          identity,
+          bio,
+          skills,
+          projects,
+          workExperience,
+          education,
+          certifications,
+          achievements,
+          extracurricular,
+          cliQuotes,
+          resume,
+          contact,
+          social,
+          theme: rawData.theme || {},
+          featureFlags,
+          seo: rawData.seo || {}
+        };
+
+        // Submit payload to local Vite middleware endpoint
+        const response = await fetch('/api/portfolio', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(fullMergedData)
+        });
+
+        if (!response.ok) {
+          const errJson = await response.json();
+          throw new Error(errJson.error || 'Server rejected updates');
+        }
+
+        showStatus('Settings successfully saved back to portfolio.json! Website updated and hot-reloaded.');
+        await loadData(); // Reload fresh state
+
+      } catch (error) {
+        showStatus('Error saving: ' + error.message, true);
+      } finally {
+        saveBtn.disabled = false;
+        saveBtn.textContent = 'Save All Settings';
+      }
+    });
+
+    // Load state on startup
+    loadData();
+  </script>
+
+</body>
+
+</html>
