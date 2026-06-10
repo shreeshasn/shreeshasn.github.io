@@ -369,16 +369,28 @@ export const ProjectHologram: React.FC = () => {
                   fontSize: '0.8125rem'
                 }}
               >
-                "We need to go deeper. You are viewing the portfolio of the portfolio website itself — a recursion level inside the reality layer."
+                "We need to go deeper. You are viewing the brutalist portfolio of the brutalist portfolio website itself — a recursion level inside the reality layer."
               </div>
             )}
 
             {/* Overview / Narrative */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-xs)' }}>
               <span style={{ fontSize: '0.75rem', color: 'var(--color-stone)', fontWeight: 700 }}>OVERVIEW //</span>
-              <p className="body-md" style={{ color: 'var(--color-body)', margin: 0 }}>
-                {modalProject.longDescription}
-              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {modalProject.longDescription
+                  .split('. ')
+                  .map((sentence) => sentence.trim())
+                  .filter(Boolean)
+                  .map((sentence, index) => {
+                    const cleanSentence = sentence.endsWith('.') ? sentence : sentence + '.';
+                    return (
+                      <li key={index} className="body-md" style={{ color: 'var(--color-body)', display: 'flex', gap: 'var(--spacing-sm)', alignItems: 'flex-start' }}>
+                        <span style={{ color: 'var(--color-accent)', marginTop: '2px' }}>[+]</span>
+                        <span style={{ flex: 1 }}>{cleanSentence}</span>
+                      </li>
+                    );
+                  })}
+              </ul>
             </div>
 
             {/* Problem & Solution TUI blocks */}

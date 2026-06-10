@@ -1,44 +1,16 @@
 import React from 'react';
 import { usePortfolio } from '../../context/PortfolioContext';
 import { DynamicIcon } from '../DynamicIcon';
+import { highlightKeywords } from '../../utils/text';
 
 export const SummaryPanel: React.FC = () => {
-  const { bio } = usePortfolio();
+  const { bio, meta } = usePortfolio();
 
   // Split longBio into bullet points by sentence
   const bullets = bio.longBio
     .split(/\.\s+/)
     .filter((s) => s.trim().length > 0)
     .map((s) => (s.endsWith('.') ? s : s + '.'));
-
-  // Simple keyword bold: wrap words with capital letters or common tech terms
-  const boldKeywords = (text: string): React.ReactNode => {
-    const keywords = ['Computer Science', 'full-stack', 'machine learning', 'AI', 'web development', 'interactive', 'technology', 'Python', 'React', 'TypeScript'];
-    let result: React.ReactNode[] = [text];
-
-    keywords.forEach((kw) => {
-      const nextResult: React.ReactNode[] = [];
-      result.forEach((node) => {
-        if (typeof node !== 'string') {
-          nextResult.push(node);
-          return;
-        }
-        const parts = node.split(new RegExp(`(${kw})`, 'gi'));
-        parts.forEach((part, i) => {
-          if (part.toLowerCase() === kw.toLowerCase()) {
-            nextResult.push(
-              <strong key={`${kw}-${i}`} style={{ color: 'var(--color-ink)', fontWeight: 700 }}>{part}</strong>
-            );
-          } else {
-            nextResult.push(part);
-          }
-        });
-      });
-      result = nextResult;
-    });
-
-    return result;
-  };
 
   return (
     <section className="content-container" style={{ paddingTop: '24px', paddingBottom: '48px' }}>
@@ -65,7 +37,7 @@ export const SummaryPanel: React.FC = () => {
         <ul style={{ margin: 0, paddingLeft: 'var(--spacing-lg)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)' }}>
           {bullets.map((bullet, i) => (
             <li key={i} className="body-md" style={{ color: 'var(--color-body)', lineHeight: 1.7 }}>
-              {boldKeywords(bullet)}
+              {highlightKeywords(bullet, meta.highlightKeywords || [])}
             </li>
           ))}
         </ul>

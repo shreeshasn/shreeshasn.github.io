@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { usePortfolio } from '../../context/PortfolioContext';
 import { playSynthSound } from '../../utils/audio';
 import { CLISuggestionDropdown } from './CLISuggestionDropdown';
@@ -11,11 +12,42 @@ interface CLITerminalProps {
 export const CLITerminal: React.FC<CLITerminalProps> = ({ engine }) => {
   const { identity, isSoundEnabled, isDarkMode } = usePortfolio();
   const inputRef = useRef<HTMLInputElement>(null);
+  const terminalCardRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Auto-focus the input
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
+
+  // Handle trigger-cli-slash event when already on CLI page
+  useEffect(() => {
+    const handleTriggerSlash = () => {
+      engine.setInput('/');
+      setTimeout(() => {
+        inputRef.current?.focus();
+        terminalCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 50);
+    };
+
+    window.addEventListener('trigger-cli-slash', handleTriggerSlash);
+    return () => window.removeEventListener('trigger-cli-slash', handleTriggerSlash);
+  }, [engine]);
+
+  // Handle trigger-cli-slash after navigating from another page
+  useEffect(() => {
+    const state = location.state as { triggerSlash?: boolean } | null;
+    if (state && state.triggerSlash) {
+      // Clear the triggerSlash state to avoid repeating on re-renders/refresh
+      navigate(location.pathname, { replace: true, state: {} });
+      engine.setInput('/');
+      setTimeout(() => {
+        inputRef.current?.focus();
+        terminalCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+  }, [location.state, location.pathname, navigate, engine]);
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,6 +75,7 @@ export const CLITerminal: React.FC<CLITerminalProps> = ({ engine }) => {
     >
       {/* TUI Terminal Container */}
       <div
+        ref={terminalCardRef}
         style={{
           width: '100%',
           maxWidth: '840px',

@@ -6,6 +6,7 @@ export interface Meta {
   title: string;
   description: string;
   keywords: string[];
+  highlightKeywords?: string[];
   author: string;
   siteUrl: string;
   ogImage: string;

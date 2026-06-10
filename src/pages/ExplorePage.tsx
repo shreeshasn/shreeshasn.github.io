@@ -6,7 +6,7 @@ import { playSynthSound } from '../utils/audio';
 
 const BOOT_MESSAGES = [
   { prefix: '[OK]', text: 'Neural subsystem initialized' },
-  { prefix: '[OK]', text: 'Portfolio kernel v2.0 loaded' },
+  { prefix: '[OK]', text: 'Brutalist Portfolio kernel v2.0 loaded' },
   { prefix: '[OK]', text: 'Creative engine: ONLINE' },
   { prefix: '[OK]', text: 'All systems nominal — ready for exploration' },
 ];

@@ -1,4 +1,5 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { PortfolioProvider } from './context/PortfolioProvider';
 import { SoundManager } from './components/SoundManager';
@@ -9,6 +10,33 @@ import { UIModePage } from './pages/UIModePage';
 import { CLIModePage } from './pages/CLIModePage';
 
 function App() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const active = document.activeElement;
+      if (active && (
+        active.tagName === 'INPUT' ||
+        active.tagName === 'TEXTAREA' ||
+        active.getAttribute('contenteditable') === 'true'
+      )) {
+        return;
+      }
+
+      if (e.key === '/') {
+        e.preventDefault();
+        if (location.pathname !== '/explore/cli') {
+          navigate('/explore/cli', { state: { triggerSlash: true } });
+        } else {
+          window.dispatchEvent(new CustomEvent('trigger-cli-slash'));
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [location.pathname, navigate]);
   return (
     <PortfolioProvider>
       <HelmetProvider>

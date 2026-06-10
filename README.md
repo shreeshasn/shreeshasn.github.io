@@ -48,7 +48,7 @@ This portfolio is divided into two distinct, high-fidelity experience modes, sel
               ┌──────────────┴───┐     ┌────────┴─────────────┐
               │ Single Page HTML │     │ Real Interactive     │
               │ Flowing Resume   │     │ Terminal Window      │
-              │ (/ui/explore)    │     │ (/cli/explore)       │
+              │ (/explore/ui)    │     │ (/explore/cli)       │
               └──────────────────┘     └────────┬─────────────┘
                                                 │
                                     ┌───────────┴─────────────┐
@@ -59,10 +59,10 @@ This portfolio is divided into two distinct, high-fidelity experience modes, sel
                                     └─────────────────────────┘
 ```
 
-### 1. UI Mode `[ Boring ]` (`/ui/explore`)
-A clean, elegant, single-page professional resume layout. It removes complex graphs and 3D scenes in favor of immediate content flow while keeping the high-contrast Brutalist theme, typography, and moving particle space background. 
+### 1. UI Mode `[ Boring ]` (`/explore/ui`)
+A clean, elegant, single-page professional resume layout. It removes complex graphs and 3D scenes in favor of immediate content flow while keeping the high-contrast Brutalist theme, typography, and moving particle space background. The hero card is visually centered in the remaining viewport height below the top navbar, separated from the Education section by a clean, symmetric horizontal divider.
 
-### 2. CLI Mode `[ Super Interesting ]` (`/cli/explore`)
+### 2. CLI Mode `[ Super Interesting ]` (`/explore/cli`)
 An immersive, terminal-driven environment. Everything is hidden at first behind a simulated boot sequence. The user interacts through a live CLI prompt with dynamic auto-completion, tab suggestions, and history. 
 Entering `/help` unveils available slash commands which render respective sections below with smooth, hardware-accelerated animations:
 *   `/about` - Core personal information, titles, and location.
@@ -75,6 +75,8 @@ Entering `/help` unveils available slash commands which render respective sectio
 *   `/resume` - Google Drive resume download utility.
 *   `/contact` - Interactive terminal-aligned form and social list.
 
+*   **Universal Keyboard Shortcut:** Pressing the `/` key anywhere on the site (unless typing in input fields) automatically redirects the viewport to CLI mode, scrolls the terminal box to the center, focuses the cursor, and populates the prompt with `/` to list suggestions.
+
 ---
 
 ## 🚀 Core Interactive Experiences
@@ -83,7 +85,11 @@ Entering `/help` unveils available slash commands which render respective sectio
 A WebGL background layer rendered via Three.js that responds to mouse movement and viewport changes, lending spatial depth and atmosphere to both modes without dragging down frame rates.
 
 ### 🕸️ 2. D3 Force-Directed Graph (`SkillGraph.tsx`)
-An interactive, self-balancing physics simulation displaying technologies and their relationships. Users can drag nodes, zoom with a custom-engineered zoom dial, and select nodes to highlight dependencies. Simulation alphas are finely tuned to conserve CPU when idle.
+An interactive, self-balancing physics simulation displaying technologies and their relationships. Users can drag nodes, zoom with a custom-engineered zoom dial, and select nodes to highlight dependencies.
+*   **Node Text Display:** Sizing is optimized to render skill counts and proficiency percentages inside the node bubbles.
+*   **Overlap Prevention:** Incorporates dynamic collision forces based on text length to automatically push nodes apart and keep labels from overlapping.
+*   **Viewport Boundaries:** Clamps node coordinates inside the tick loop based on text metrics to ensure labels are never cut off or masked behind screen edges.
+*   **Connected Fades:** Hovering over a cluster or individual node fades all non-connected elements to `0.05` opacity for concentrated focus.
 
 ### 💿 3. 3D Holographic Projects (`ProjectHologram.tsx`)
 A declarative 3D scene built in `@react-three/fiber` and `@react-three/drei`. Project screenshots are projected onto floating holographic cards in virtual space with subtle hover tilt physics and glitch effects.

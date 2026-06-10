@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PORTFOLIO DATA EDITOR</title>
+  <title>BRUTALIST PORTFOLIO DATA EDITOR</title>
   <style>
     :root {
       --color-canvas: #fdfcfc;
@@ -208,24 +208,30 @@
     }
 
     .status-banner {
-      padding: 10px;
-      margin-bottom: 20px;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10000;
+      width: 350px;
+      max-width: calc(100vw - 40px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border: 1px solid var(--color-hairline);
+      border-left: 4px solid transparent;
+      padding: 15px;
       font-size: 0.85rem;
       display: none;
-      border-left: 4px solid transparent;
+      background-color: var(--color-canvas);
     }
 
     .success {
       display: block;
-      background-color: rgba(48, 209, 88, 0.1);
-      border-color: var(--color-success);
+      border-left-color: var(--color-success);
       color: var(--color-success);
     }
 
     .error {
       display: block;
-      background-color: rgba(255, 59, 48, 0.1);
-      border-color: var(--color-danger);
+      border-left-color: var(--color-danger);
       color: var(--color-danger);
     }
 
@@ -249,7 +255,7 @@
       <a href="/explore" style="color: var(--color-accent); text-decoration: none;">← Return to Website</a>
     </div>
 
-    <h1>[ SSN.SYS // PORTFOLIO DATA EDITOR ]</h1>
+    <h1>[ SSN.SYS // BRUTALIST PORTFOLIO DATA EDITOR ]</h1>
     <p class="intro">// 100% manual-JSON-free profile editing. Fill input fields below and click save. The portfolio
       hot-reloads instantly.</p>
 
@@ -287,6 +293,10 @@
             <label>Keywords (comma-separated)</label>
             <input type="text" id="meta_keywords">
           </div>
+        </div>
+        <div class="form-group">
+          <label>Highlight Keywords (comma-separated list for bold styling in Bio/Summary)</label>
+          <input type="text" id="meta_highlightKeywords">
         </div>
       </div>
 
@@ -353,6 +363,7 @@
         <div class="form-group">
           <label>Long Bio</label>
           <textarea id="bio_longBio" rows="3" required></textarea>
+          <div id="bio_longBio_preview" style="margin-top: 8px; padding: 10px; border: 1px dashed var(--color-hairline); background-color: var(--color-canvas); font-size: 0.8rem; line-height: 1.5; white-space: pre-wrap;"></div>
         </div>
         <div class="form-group">
           <label>Core Philosophy</label>
@@ -370,7 +381,7 @@
         </div>
       </div>
 
-      <!-- 4. NARRATIVE PHASES -->
+      <!-- 4. NARRATIVE PHASES (Commented Out - Not Used)
       <h2>4. Development Phases (Timeline Narrative)</h2>
       <div class="form-section">
         <h3>Phase 1: Fundamentals</h3>
@@ -433,6 +444,7 @@
           <input type="text" id="bio_narrative_phase3_keyMoment">
         </div>
       </div>
+      -->
 
       <!-- 5. FEATURE FLAGS -->
       <h2>5. Feature Toggles & Controls</h2>
@@ -714,13 +726,74 @@
   <script>
     let rawData = {};
 
+    const BOLD_KEYWORDS = [
+      'Software Engineer',
+      'AI/ML Intern',
+      'Team Leader',
+      'Solo Developer',
+      'Artsy Technologies',
+      'Python',
+      'FastAPI',
+      'React',
+      'Next.js',
+      'PostgreSQL',
+      'Docker',
+      'Machine Learning',
+      'Generative AI',
+      'TypeScript',
+      'JavaScript',
+      'Java',
+      'Spring Boot',
+      'Redis',
+      'MongoDB',
+      'three.js',
+      'd3.js',
+      'applied AI',
+      'system design',
+      'software engineering',
+      'full-stack',
+      'RAG',
+      'vector search',
+      'multi-agent systems',
+      'LLM-powered',
+      'microservices',
+      'biometric verification',
+      'event-driven',
+      'placement preparation platform',
+      'cinematic dubbing',
+      'localization platform'
+    ];
+
+    function highlightKeywordsJS(text) {
+      if (!text) return '';
+      const inputEl = document.getElementById('meta_highlightKeywords');
+      const keywords = (inputEl && inputEl.value.trim().length > 0)
+        ? inputEl.value.split(',').map(s => s.trim()).filter(Boolean)
+        : BOLD_KEYWORDS;
+      if (keywords.length === 0) return text;
+      const sortedKeywords = [...keywords].sort((a, b) => b.length - a.length);
+      const escapeRegExp = (string) => {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      };
+      const pattern = sortedKeywords.map(escapeRegExp).join('|');
+      const regex = new RegExp(`(${pattern})`, 'gi');
+      return text.replace(regex, (match) => {
+        return `<strong style="color: var(--color-accent); font-weight: 700;">${match}</strong>`;
+      });
+    }
+
     const statusBanner = document.getElementById('statusBanner');
     const saveBtn = document.getElementById('saveBtn');
 
+    let statusTimeout;
     function showStatus(msg, isError = false) {
       statusBanner.textContent = msg;
       statusBanner.className = 'status-banner ' + (isError ? 'error' : 'success');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      statusBanner.style.display = 'block';
+      if (statusTimeout) clearTimeout(statusTimeout);
+      statusTimeout = setTimeout(() => {
+        statusBanner.style.display = 'none';
+      }, 5000);
     }
 
     // Load local JSON dataset
@@ -737,6 +810,7 @@
         document.getElementById('meta_favicon').value = rawData.meta.favicon || '';
         document.getElementById('meta_canonicalUrl').value = rawData.meta.canonicalUrl || '';
         document.getElementById('meta_keywords').value = (rawData.meta.keywords || []).join(', ');
+        document.getElementById('meta_highlightKeywords').value = (rawData.meta.highlightKeywords || []).join(', ');
 
         // Populate Identity
         document.getElementById('identity_fullName').value = rawData.identity.fullName || '';
@@ -757,7 +831,8 @@
         document.getElementById('bio_currentFocus').value = rawData.bio.currentFocus || '';
         document.getElementById('bio_futureAspiration').value = rawData.bio.futureAspiration || '';
 
-        // Populate Narrative Phases
+        // Populate Narrative Phases (Commented Out - Not Used)
+        /*
         document.getElementById('bio_narrative_phase1_title').value = rawData.bio.narrative?.phase1?.title || '';
         document.getElementById('bio_narrative_phase1_duration').value = rawData.bio.narrative?.phase1?.duration || '';
         document.getElementById('bio_narrative_phase1_description').value = rawData.bio.narrative?.phase1?.description || '';
@@ -772,6 +847,7 @@
         document.getElementById('bio_narrative_phase3_duration').value = rawData.bio.narrative?.phase3?.duration || '';
         document.getElementById('bio_narrative_phase3_description').value = rawData.bio.narrative?.phase3?.description || '';
         document.getElementById('bio_narrative_phase3_keyMoment').value = rawData.bio.narrative?.phase3?.keyMoment || '';
+        */
 
         // Populate flags
         document.getElementById('flags_enableParticles').checked = !!rawData.featureFlags.enableParticles;
@@ -834,9 +910,98 @@
         renderExtracurricular(rawData.extracurricular || []);
         renderQuotes(rawData.cliQuotes || []);
 
+        initializePreviews();
+        initializeCollapsibleSections();
+
       } catch (e) {
         showStatus('Error loading data: ' + e.message, true);
       }
+    }
+
+    function initializePreviews() {
+      const bioLongBio = document.getElementById('bio_longBio');
+      const bioPreview = document.getElementById('bio_longBio_preview');
+      const keywordsInput = document.getElementById('meta_highlightKeywords');
+      
+      const updateBioPreview = () => {
+        bioPreview.innerHTML = `<strong>[LIVE PREVIEW]</strong><br/>` + highlightKeywordsJS(bioLongBio.value);
+      };
+      
+      bioLongBio.removeEventListener('input', updateBioPreview);
+      bioLongBio.addEventListener('input', updateBioPreview);
+      
+      if (keywordsInput) {
+        keywordsInput.removeEventListener('input', updateBioPreview);
+        keywordsInput.addEventListener('input', updateBioPreview);
+      }
+      
+      updateBioPreview(); // Initial call
+
+      // For dynamic project textareas (previews are generated initially inside createProjectItem)
+      document.querySelectorAll('#projectsList .array-item').forEach(el => {
+        const textarea = el.querySelector('.proj-long');
+        const preview = el.querySelector('.proj-long-preview');
+        if (textarea && preview) {
+          preview.innerHTML = `<strong>[LIVE PREVIEW]</strong><br/>` + textarea.value;
+        }
+      });
+    }
+
+    // Event delegation for project long descriptions live preview
+    document.getElementById('projectsList').addEventListener('input', (e) => {
+      if (e.target && e.target.classList.contains('proj-long')) {
+        const textarea = e.target;
+        const preview = textarea.nextElementSibling;
+        if (preview && preview.classList.contains('proj-long-preview')) {
+          preview.innerHTML = `<strong>[LIVE PREVIEW]</strong><br/>` + textarea.value;
+        }
+      }
+    });
+
+    function initializeCollapsibleSections() {
+      if (window.collapsiblesInitialized) return;
+      window.collapsiblesInitialized = true;
+
+      document.querySelectorAll('.container h2').forEach((h2, idx) => {
+        h2.style.cursor = 'pointer';
+        h2.style.userSelect = 'none';
+        h2.style.display = 'flex';
+        h2.style.justifyContent = 'space-between';
+        h2.style.alignItems = 'center';
+        
+        const section = h2.nextElementSibling;
+        if (section && section.classList.contains('form-section')) {
+          const sectionId = `section_collapsed_${idx}`;
+          const isCollapsed = localStorage.getItem(sectionId) === 'true';
+          
+          // Add indicator span
+          const indicator = document.createElement('span');
+          indicator.className = 'collapse-indicator';
+          indicator.style.fontSize = '0.8rem';
+          indicator.style.fontFamily = 'var(--font-mono)';
+          h2.appendChild(indicator);
+          
+          const setCollapsedState = (collapsed) => {
+            if (collapsed) {
+              section.style.display = 'none';
+              indicator.textContent = '[+] EXPAND';
+              localStorage.setItem(sectionId, 'true');
+            } else {
+              section.style.display = 'block';
+              indicator.textContent = '[×] COLLAPSE';
+              localStorage.setItem(sectionId, 'false');
+            }
+          };
+          
+          // Initialize
+          setCollapsedState(isCollapsed);
+          
+          h2.addEventListener('click', () => {
+            const currentCollapsed = section.style.display === 'none';
+            setCollapsedState(!currentCollapsed);
+          });
+        }
+      });
     }
 
     // Render Dynamic Arrays
@@ -954,6 +1119,7 @@
       <div class="form-group">
         <label>Long Description</label>
         <textarea class="proj-long" rows="3" required>${proj.longDescription || ''}</textarea>
+        <div class="proj-long-preview" style="margin-top: 8px; padding: 10px; border: 1px dashed var(--color-hairline); background-color: var(--color-canvas); font-size: 0.8rem; line-height: 1.5; white-space: pre-wrap;"></div>
       </div>
       <div class="grid-3">
         <div class="form-group">
@@ -1475,6 +1641,7 @@
           favicon: document.getElementById('meta_favicon').value,
           canonicalUrl: document.getElementById('meta_canonicalUrl').value,
           keywords: document.getElementById('meta_keywords').value.split(',').map(s => s.trim()).filter(Boolean),
+          highlightKeywords: document.getElementById('meta_highlightKeywords').value.split(',').map(s => s.trim()).filter(Boolean),
           siteUrl: rawData.meta.siteUrl || '',
           ogImage: rawData.meta.ogImage || '',
           twitterHandle: rawData.meta.twitterHandle || ''
@@ -1513,26 +1680,7 @@
           philosophy: document.getElementById('bio_philosophy').value,
           currentFocus: document.getElementById('bio_currentFocus').value,
           futureAspiration: document.getElementById('bio_futureAspiration').value,
-          narrative: {
-            phase1: {
-              title: document.getElementById('bio_narrative_phase1_title').value,
-              duration: document.getElementById('bio_narrative_phase1_duration').value,
-              description: document.getElementById('bio_narrative_phase1_description').value,
-              keyMoment: document.getElementById('bio_narrative_phase1_keyMoment').value
-            },
-            phase2: {
-              title: document.getElementById('bio_narrative_phase2_title').value,
-              duration: document.getElementById('bio_narrative_phase2_duration').value,
-              description: document.getElementById('bio_narrative_phase2_description').value,
-              keyMoment: document.getElementById('bio_narrative_phase2_keyMoment').value
-            },
-            phase3: {
-              title: document.getElementById('bio_narrative_phase3_title').value,
-              duration: document.getElementById('bio_narrative_phase3_duration').value,
-              description: document.getElementById('bio_narrative_phase3_description').value,
-              keyMoment: document.getElementById('bio_narrative_phase3_keyMoment').value
-            }
-          }
+          narrative: rawData.bio?.narrative || {}
         };
 
         // 4. Gather Feature Flags

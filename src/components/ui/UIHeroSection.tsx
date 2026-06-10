@@ -1,31 +1,33 @@
 import React from 'react';
 import { usePortfolio } from '../../context/PortfolioContext';
+import { highlightKeywords } from '../../utils/text';
 
 export const UIHeroSection: React.FC = () => {
-  const { identity, bio, isDarkMode } = usePortfolio();
+  const { identity, bio, isDarkMode, meta } = usePortfolio();
 
   return (
     <section
       id="about"
-      className="section-spacing content-container"
+      className="content-container"
       style={{
         borderBottom: '1px solid var(--color-hairline)',
         minHeight: 'calc(100vh - 56px)',
         display: 'flex',
-        alignItems: 'stretch',
+        alignItems: 'center',
         justifyContent: 'center',
+        paddingTop: 'var(--spacing-xl)',
+        paddingBottom: 'var(--spacing-xl)',
       }}
     >
       <div
         className="hairline-border"
         style={{
-          padding: 'var(--spacing-xl) var(--spacing-xxl)',
+          padding: 'var(--spacing-xl)',
           backgroundColor: 'var(--color-canvas)',
           display: 'flex',
           flexDirection: 'column',
-          gap: 'var(--spacing-xl)',
+          gap: 'var(--spacing-md)',
           width: '100%',
-          minHeight: '100%',
         }}
       >
         {/* Name & Title */}
@@ -54,7 +56,7 @@ export const UIHeroSection: React.FC = () => {
 
         {/* Bio */}
         <p className="body-md" style={{ color: 'var(--color-body)', margin: 0, lineHeight: 1.7 }}>
-          {bio.longBio}
+          {highlightKeywords(bio.longBio, meta.highlightKeywords || [])}
         </p>
 
 

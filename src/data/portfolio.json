@@ -1,17 +1,31 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-06-06T15:02:09.256Z",
+  "lastUpdated": "2026-06-08T17:53:12.470Z",
   "meta": {
     "title": ">_  SSN.SYS",
     "author": "Shreesha S Nekkar",
-    "description": "A futuristic, AI-native portfolio showcasing my CS journey through interactive data visualization, project holograms, and particle systems.",
+    "description": "A futuristic, AI-native brutalist portfolio showcasing my CS journey through interactive data visualization, project holograms, and particle systems.",
     "favicon": "/favicon.svg",
     "canonicalUrl": "https://shreeshasn.github.io",
     "keywords": [
-      "CS Student",
       "Full Stack",
       "Machine Learning",
       "Web Development"
+    ],
+    "highlightKeywords": [
+      "Software Engineer",
+      "AI/ML Intern",
+      "Team Leader",
+      "Solo Developer",
+      "Artsy Technologies",
+      "Machine Learning",
+      "Generative AI",
+      "applied AI",
+      "system design",
+      "software engineering",
+      "full-stack",
+      "multi-agent systems",
+      "microservices"
     ],
     "siteUrl": "https://shreeshasn.github.io",
     "ogImage": "https://shreeshasn.github.io/og-image.webp",
@@ -21,14 +35,14 @@
     "firstName": "Shreesha",
     "lastName": "S Nekkar",
     "fullName": "Shreesha S Nekkar",
-    "title": "CS Engineering Student",
+    "title": "Software Engineer",
     "avatar": {
       "url": "/assets/avatar.webp",
       "initials": "SSN",
       "bgColor": "#201d1d"
     },
-    "tagline": "Building with code and AI",
-    "subtitle": "Full-stack developer | AI/ML enthusiast | Problem solver",
+    "tagline": "Building AI-Powered Full-Stack Applications",
+    "subtitle": "Building AI-Powered Full-Stack Applications",
     "email": "shreeshasnekkar81@gmail.com",
     "phone": "7619482685",
     "location": {
@@ -38,14 +52,14 @@
       "timezone": "IST"
     },
     "pronouns": "he/him",
-    "status": "Open to internships and exciting projects",
+    "status": "Actively seeking opportunities to build scalable software products and AI-powered systems",
     "statusEmoji": ""
   },
   "bio": {
-    "shortBio": "A CS student passionate about building interactive experiences and solving complex problems with code.",
-    "longBio": "I'm a Computer Science student with a deep passion for full-stack development and machine learning. I started my journey with fundamentals, built my way through web development, and now explore the intersection of AI and interactive systems. Every project is a stepping stone in understanding how technology shapes the future.",
+    "shortBio": "Software Engineer focused on building AI-powered full-stack applications that combine modern software engineering, applied AI, and scalable system design. ",
+    "longBio": "Software Engineer focused on building AI-powered full-stack applications that combine modern software engineering, applied AI, and scalable system design. I enjoy turning ideas into working products by combining technologies such as Python, FastAPI, React, Next.js, PostgreSQL, Docker, Machine Learning, and Generative AI. Over the past year, I have built projects ranging from AI-powered learning platforms and multi-agent systems to developer tools, analytics dashboards, and full-stack web applications. These experiences have helped me develop a strong understanding of application architecture, APIs, databases, deployment workflows, and integrating AI capabilities into software products. Currently, I am working as an AI/ML Intern at Artsy Technologies, where I contribute to building AI-driven systems and gain hands-on experience working in a collaborative development environment.",
     "philosophy": "Code is not just about functionality; it's about creating experiences that matter.",
-    "currentFocus": "Building intelligent, interactive systems at the intersection of AI and web development",
+    "currentFocus": "Building intelligent, interactive systems at the intersection of AI and Software development",
     "futureAspiration": "Create tools that empower people to solve real-world problems",
     "narrative": {
       "phase1": {
@@ -69,6 +83,25 @@
     }
   },
   "skills": [
+    {
+      "id": "software-development",
+      "name": "Software Development",
+      "category": "language",
+      "proficiency": 85,
+      "yearsExperience": 2.0,
+      "description": "General software engineering and product development methodologies",
+      "tags": [
+        "engineering",
+        "development"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "high-level-design",
+        "full-stack",
+        "oop"
+      ],
+      "proficiencyLevel": "Advanced"
+    },
     {
       "id": "python",
       "name": "Python",
@@ -533,7 +566,7 @@
         "llm",
         "rag"
       ],
-      "hideFromPublic": false,
+      "hideFromPublic": true,
       "relatedSkills": [],
       "proficiencyLevel": "Intermediate"
     },
@@ -552,6 +585,228 @@
       "hideFromPublic": false,
       "relatedSkills": [],
       "proficiencyLevel": "Advanced"
+    },
+    {
+      "id": "xgboost",
+      "name": "XGBoost",
+      "category": "library",
+      "proficiency": 75,
+      "yearsExperience": 1,
+      "description": "Gradient-boosted decision tree framework for classification and regression",
+      "tags": [
+        "ml",
+        "data-science"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "scikit-learn",
+        "pytorch",
+        "pandas"
+      ],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "shap",
+      "name": "SHAP",
+      "category": "library",
+      "proficiency": 70,
+      "yearsExperience": 0.5,
+      "description": "SHapley Additive exPlanations for model interpretability and explainable AI",
+      "tags": [
+        "ml",
+        "explainability"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "xgboost",
+        "scikit-learn"
+      ],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "api-development",
+      "name": "API Development",
+      "category": "language",
+      "proficiency": 82,
+      "yearsExperience": 2,
+      "description": "Designing and building RESTful APIs and service interfaces",
+      "tags": [
+        "backend",
+        "architecture"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "fastapi",
+        "spring-boot",
+        "express",
+        "flask"
+      ],
+      "proficiencyLevel": "Advanced"
+    },
+    {
+      "id": "microservices",
+      "name": "Microservices",
+      "category": "language",
+      "proficiency": 75,
+      "yearsExperience": 1,
+      "description": "Distributed service architectures and orchestration patterns",
+      "tags": [
+        "architecture",
+        "backend"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "docker",
+        "redis",
+        "kafka",
+        "api-development"
+      ],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "high-level-design",
+      "name": "High-Level Design",
+      "category": "language",
+      "proficiency": 78,
+      "yearsExperience": 1.5,
+      "description": "System design, architecture patterns, and scalability planning",
+      "tags": [
+        "architecture",
+        "system-design"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "microservices",
+        "api-development"
+      ],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "full-stack",
+      "name": "Full Stack",
+      "category": "language",
+      "proficiency": 85,
+      "yearsExperience": 2.5,
+      "description": "End-to-end application development across frontend and backend",
+      "tags": [
+        "fullstack",
+        "web"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "react",
+        "fastapi",
+        "next.js",
+        "postgresql"
+      ],
+      "proficiencyLevel": "Advanced"
+    },
+    {
+      "id": "oop",
+      "name": "OOP",
+      "category": "language",
+      "proficiency": 88,
+      "yearsExperience": 2.5,
+      "description": "Object-oriented programming principles and design patterns",
+      "tags": [
+        "programming",
+        "patterns"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "java",
+        "python"
+      ],
+      "proficiencyLevel": "Advanced"
+    },
+    {
+      "id": "data-analysis",
+      "name": "Data Analysis",
+      "category": "language",
+      "proficiency": 80,
+      "yearsExperience": 2,
+      "description": "Extracting insights from data through statistical and computational methods",
+      "tags": [
+        "data-science",
+        "analytics"
+      ],
+      "hideFromPublic": true,
+      "relatedSkills": [
+        "pandas",
+        "numpy",
+        "d3-js"
+      ],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "data-visualization",
+      "name": "Data Visualization",
+      "category": "language",
+      "proficiency": 78,
+      "yearsExperience": 1.5,
+      "description": "Creating interactive visual representations of data and model outputs",
+      "tags": [
+        "visualization",
+        "data"
+      ],
+      "hideFromPublic": true,
+      "relatedSkills": [
+        "d3-js",
+        "data-analysis"
+      ],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "github-platform",
+      "name": "GitHub",
+      "category": "tool",
+      "proficiency": 90,
+      "yearsExperience": 3,
+      "description": "Platform for version control, collaboration, and open-source contributions",
+      "tags": [
+        "devops",
+        "collaboration"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "git"
+      ],
+      "proficiencyLevel": "Advanced"
+    },
+    {
+      "id": "github-api",
+      "name": "GitHub API",
+      "category": "tool",
+      "proficiency": 72,
+      "yearsExperience": 0.5,
+      "description": "GitHub REST API v3 for repository analysis and automation",
+      "tags": [
+        "api",
+        "devops"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "github-platform",
+        "git"
+      ],
+      "proficiencyLevel": "Intermediate"
+    },
+    {
+      "id": "iam",
+      "name": "IAM",
+      "category": "language",
+      "proficiency": 65,
+      "yearsExperience": 0.5,
+      "description": "Identity and Access Management for secure authentication and authorization",
+      "tags": [
+        "security",
+        "backend"
+      ],
+      "hideFromPublic": false,
+      "relatedSkills": [
+        "api-development"
+      ],
+      "proficiencyLevel": "Beginner"
     }
   ],
   "projects": [
@@ -559,8 +814,8 @@
       "id": "platonis-ai",
       "title": "Platonis.AI",
       "subtitle": "Campus placement preparation platform for engineering students",
-      "shortDescription": "A comprehensive AI-powered preparation suite featuring local RAG-based aptitude quizzes, real-time code evaluation, and adaptive mock interviews.",
-      "longDescription": "Platonis.AI is a secure, local-first placement preparation platform built to help CS students practice and analyze their readiness across core domains. It integrates local vector indexing, fine-tuned LLM execution, adaptive speech-to-text scoring, and custom machine learning predictors—all operating entirely on free/local resources.",
+      "shortDescription": "AI-powered placement preparation platform combining RAG, adaptive assessments, AI mock interviews, speech analysis, and personalized performance insights.",
+      "longDescription": "Platonis.AI is an AI-powered placement preparation platform designed to help engineering students assess and improve their readiness across aptitude, coding, communication, and interview preparation. The platform combines retrieval-augmented generation (RAG), adaptive assessments, AI-powered mock interviews, speech analysis, and personalized performance insights to create a comprehensive preparation experience. I developed modular backend services, AI evaluation pipelines, retrieval systems, and full-stack application workflows while integrating LLM-powered features, vector search, and custom prediction models. Built with a focus on scalable AI-assisted learning experiences, local-first processing, and cost-efficient inference using open-source and free-tier AI technologies.",
       "category": "web",
       "subcategories": [],
       "status": "in-progress",
@@ -581,7 +836,8 @@
         "generative-ai",
         "pytorch",
         "scikit-learn",
-        "tailwind-css"
+        "tailwind-css",
+        "langchain"
       ],
       "description": {
         "challenge": "Building a multi-modal assessment system that is secure, local-first, and costs zero in marginal inference fees.",
@@ -611,11 +867,65 @@
       "archived": false
     },
     {
+      "id": "vox",
+      "title": "VoxGlobal AI",
+      "subtitle": "Event-driven cinematic dubbing & localization platform",
+      "shortDescription": "AI-powered cinematic dubbing and localization platform with translation workflows, consent management, and CI/CD integrations.",
+      "longDescription": "VoxGlobal AI is an AI-powered cinematic dubbing and localization platform designed to help creators adapt content across languages while preserving context, voice identity, and user consent. My role involves leading the development of translation workflows, consent management systems, CI/CD integrations, and platform administration features, while contributing to system architecture, API design, and deployment planning. As part of this work, I collaborate on integrating AI-powered translation, voice processing, consent verification, and project management services into a unified localization workflow. The platform leverages workflow automation, centralized administration, and AI-driven processing to streamline content localization. Currently under active development as part of my AI/ML internship at Artsy Technologies.",
+      "category": "web",
+      "subcategories": [],
+      "status": "in-progress",
+      "featured": true,
+      "complexity": "extreme",
+      "startDate": "2026-05-15",
+      "endDate": null,
+      "duration": "Ongoing (Internship)",
+      "role": "Team Leader",
+      "teamSize": 3,
+      "skillsUsed": [
+        "next.js",
+        "fastapi",
+        "python",
+        "typescript",
+        "postgresql",
+        "redis",
+        "docker",
+        "git",
+        "react"
+      ],
+      "description": {
+        "challenge": "Managing multi-stage audio processing tasks concurrently across multiple distributed microservices.",
+        "solution": "Building an event-driven pub/sub architecture utilizing Redis Streams for message brokers and PostgreSQL pgvector for speaker profiles.",
+        "approach": "Leading architecture design, setting up the Docker Compose monorepo, writing API gateway routers, and optimizing WavLM biometric verification."
+      },
+      "keyLearnings": [
+        "Microservice orchestration and monorepo management (PNPM)",
+        "Event-driven programming with Redis Streams",
+        "Database vectors (pgvector) and speaker identification",
+        "CI/CD automated release schedules"
+      ],
+      "metrics": {},
+      "links": {
+        "github": "https://github.com/shreeshasn/VoxGlobal_AI"
+      },
+      "media": {
+        "thumbnail": "",
+        "images": []
+      },
+      "techStack": {
+        "frontend": [],
+        "backend": [],
+        "deployment": []
+      },
+      "hideFromPublic": false,
+      "archived": false
+    },
+    {
       "id": "noetis-ai",
       "title": "Noetis.AI",
       "subtitle": "Cognitive Drift Intelligence Platform for education",
-      "shortDescription": "Traces student conceptual understanding over time to detect knowledge decay using dynamic Graph Neural Networks and Transformers.",
-      "longDescription": "Noetis.AI analyzes massive student interaction logs (trained on CC BY-NC 4.0 EdNet dataset) to map and forecast how mastery fluctuates. Instead of predicting binary next-question correctness, it evaluates cognitive drift across interconnected concepts and alerts instructors with SHAP explainability and What-If simulation.",
+      "shortDescription": "Cognitive drift intelligence platform that identifies and predicts knowledge decay patterns using Transformer-based Knowledge Tracing, Graph Neural Networks, and Explainable AI.",
+      "longDescription": "Noetis.AI is a cognitive drift intelligence platform designed to identify and predict knowledge decay patterns in students by analyzing learning behavior across interconnected concepts. The platform combines Transformer-based Knowledge Tracing, Graph Neural Networks, gradient-boosted machine learning models, and explainable AI techniques to forecast changes in conceptual mastery and provide actionable educational insights. I developed the machine learning pipeline, data processing workflows, predictive modeling systems, and interactive visualization components while working with large-scale educational datasets and custom model architectures. Built to explore the intersection of machine learning, learning analytics, and explainable AI, with a focus on transforming complex educational data into interpretable decision-support systems.",
       "category": "ml",
       "subcategories": [],
       "status": "completed",
@@ -668,8 +978,8 @@
       "id": "audita",
       "title": "Audita",
       "subtitle": "Automated GitHub repository health and quality auditor",
-      "shortDescription": "Evaluates any public GitHub repository across 7 weighted categories to return a normalized score out of 100 with a letter grade.",
-      "longDescription": "Audita is a high-performance repository scanner that parses documentation, CI/CD pipeline configs, release cadence, and code quality elements via GitHub REST API v3. It features Caffeine-based memory caching, low latency, PDF report export, and a custom cold-start UI.",
+      "shortDescription": "Automated GitHub repository auditing platform evaluating documentation, CI/CD, Docker configs, release activity, and engineering best practices.",
+      "longDescription": "Audita is an automated GitHub repository auditing platform designed to help developers evaluate project quality, maintainability, and engineering best practices across public repositories. The platform analyzes documentation quality, CI/CD pipelines, Docker configurations, release activity, repository structure, and development workflows to generate a comprehensive health score and actionable improvement recommendations. I developed the repository analysis engine, GitHub API integrations, scoring framework, caching mechanisms, and reporting workflows while optimizing performance for large-scale repository inspections. Built to support open-source developers and engineering teams in identifying quality gaps, improving project standards, and maintaining healthier software ecosystems.",
       "category": "web",
       "subcategories": [],
       "status": "completed",
@@ -685,7 +995,8 @@
         "spring-boot",
         "javascript",
         "docker",
-        "git"
+        "git",
+        "react"
       ],
       "description": {
         "challenge": "Fetching multiple repository pages from GitHub without hitting severe rate limits or causing long server wait times.",
@@ -702,59 +1013,6 @@
       "links": {
         "github": "https://github.com/shreeshasn/Audita",
         "liveDemo": "https://audita-nkss.onrender.com"
-      },
-      "media": {
-        "thumbnail": "",
-        "images": []
-      },
-      "techStack": {
-        "frontend": [],
-        "backend": [],
-        "deployment": []
-      },
-      "hideFromPublic": false,
-      "archived": false
-    },
-    {
-      "id": "vox",
-      "title": "VoxGlobal AI",
-      "subtitle": "Event-driven cinematic dubbing & localization platform",
-      "shortDescription": "Coordinates decoupled video separation, translation, and forensic watermarking services using Redis Streams.",
-      "longDescription": "VoxGlobal AI is a cinematic-grade localization workflow monorepo. It features Next.js portals, a FastAPI API gateway, multiple custom Python audio/NLP pipeline workers, PostgreSQL with pgvector embeddings, and Redis Streams. Coordinated inside anArts Technologies internship.",
-      "category": "web",
-      "subcategories": [],
-      "status": "in-progress",
-      "featured": true,
-      "complexity": "extreme",
-      "startDate": "2026-05-15",
-      "endDate": null,
-      "duration": "Ongoing (Internship)",
-      "role": "Team Leader",
-      "teamSize": 3,
-      "skillsUsed": [
-        "next.js",
-        "fastapi",
-        "python",
-        "typescript",
-        "postgresql",
-        "redis",
-        "docker",
-        "git"
-      ],
-      "description": {
-        "challenge": "Managing multi-stage audio processing tasks concurrently across multiple distributed microservices.",
-        "solution": "Built an event-driven pub/sub architecture utilizing Redis Streams for message brokers and PostgreSQL pgvector for speaker profiles.",
-        "approach": "Led architecture design, set up the Docker Compose monorepo, wrote API gateway routers, and optimized WavLM biometric verification."
-      },
-      "keyLearnings": [
-        "Microservice orchestration and monorepo management (PNPM)",
-        "Event-driven programming with Redis Streams",
-        "Database vectors (pgvector) and speaker identification",
-        "CI/CD automated release schedules"
-      ],
-      "metrics": {},
-      "links": {
-        "github": "https://github.com/shreeshasn/VoxGlobal_AI"
       },
       "media": {
         "thumbnail": "",
@@ -823,57 +1081,6 @@
       "archived": false
     },
     {
-      "id": "algoscale",
-      "title": "AlgoScale",
-      "subtitle": "AI-powered algorithmic complexity and cost analyzer",
-      "shortDescription": "Analyzes Python source code using Abstract Syntax Trees and Scikit-Learn to predict Big-O runtime and execution metrics.",
-      "longDescription": "AlgoScale extracts structural features from code snippets using Abstract Syntax Trees (AST) and uses trained RandomForest/GradientBoosting estimators to categorize code into 15 complexity classes and estimate runtime performance.",
-      "category": "ml",
-      "subcategories": [],
-      "status": "completed",
-      "featured": false,
-      "complexity": "medium",
-      "startDate": "2026-05-06",
-      "endDate": "2026-05-07",
-      "duration": "1 Week",
-      "role": "Solo Developer",
-      "teamSize": 1,
-      "skillsUsed": [
-        "react",
-        "fastapi",
-        "python",
-        "scikit-learn",
-        "pandas",
-        "numpy",
-        "tailwind-css"
-      ],
-      "description": {
-        "challenge": "Mapping arbitrary source code text to numerical complexity metrics without execution sandbox risks.",
-        "solution": "Constructed an AST parser to extract 18 code signature features, feeding into classification and regression ensembles.",
-        "approach": "Built AST analysis pipelines, trained ensembles on 150k generated code rows, and created a Monaco-based React UI."
-      },
-      "keyLearnings": [
-        "Abstract Syntax Tree traversal and node inspection (Python `ast`)",
-        "Synthesizing large, balanced datasets for ML classifier training",
-        "Integrating Monaco Editor with custom token rules in React"
-      ],
-      "metrics": {},
-      "links": {
-        "github": "https://github.com/shreeshasn/AlgoScale"
-      },
-      "media": {
-        "thumbnail": "",
-        "images": []
-      },
-      "techStack": {
-        "frontend": [],
-        "backend": [],
-        "deployment": []
-      },
-      "hideFromPublic": false,
-      "archived": false
-    },
-    {
       "id": "nexuserp",
       "title": "NexusERP",
       "subtitle": "Mini project management and ERP system",
@@ -911,6 +1118,57 @@
       "links": {
         "github": "https://github.com/shreeshasn/NexusERP",
         "liveDemo": "https://nexus-erp-rose.vercel.app"
+      },
+      "media": {
+        "thumbnail": "",
+        "images": []
+      },
+      "techStack": {
+        "frontend": [],
+        "backend": [],
+        "deployment": []
+      },
+      "hideFromPublic": false,
+      "archived": false
+    },
+    {
+      "id": "algoscale",
+      "title": "AlgoScale",
+      "subtitle": "AI-powered algorithmic complexity and cost analyzer",
+      "shortDescription": "Analyzes Python source code using Abstract Syntax Trees and Scikit-Learn to predict Big-O runtime and execution metrics.",
+      "longDescription": "AlgoScale extracts structural features from code snippets using Abstract Syntax Trees (AST) and uses trained RandomForest/GradientBoosting estimators to categorize code into 15 complexity classes and estimate runtime performance.",
+      "category": "ml",
+      "subcategories": [],
+      "status": "completed",
+      "featured": false,
+      "complexity": "medium",
+      "startDate": "2026-05-06",
+      "endDate": "2026-05-07",
+      "duration": "1 Week",
+      "role": "Solo Developer",
+      "teamSize": 1,
+      "skillsUsed": [
+        "react",
+        "fastapi",
+        "python",
+        "scikit-learn",
+        "pandas",
+        "numpy",
+        "tailwind-css"
+      ],
+      "description": {
+        "challenge": "Mapping arbitrary source code text to numerical complexity metrics without execution sandbox risks.",
+        "solution": "Constructed an AST parser to extract 18 code signature features, feeding into classification and regression ensembles.",
+        "approach": "Built AST analysis pipelines, trained ensembles on 150k generated code rows, and created a Monaco-based React UI."
+      },
+      "keyLearnings": [
+        "Abstract Syntax Tree traversal and node inspection (Python `ast`)",
+        "Synthesizing large, balanced datasets for ML classifier training",
+        "Integrating Monaco Editor with custom token rules in React"
+      ],
+      "metrics": {},
+      "links": {
+        "github": "https://github.com/shreeshasn/AlgoScale"
       },
       "media": {
         "thumbnail": "",
@@ -1021,10 +1279,10 @@
     },
     {
       "id": "portfolio-website",
-      "title": "Reality Layer Portfolio",
-      "subtitle": "AI-native futuristic portfolio with particle systems",
-      "shortDescription": "An interactive, data-driven portfolio that reorganizes based on visitor intent using Canvas, D3.js, and AI.",
-      "longDescription": "This portfolio website represents the reality layer itself. It maps out skills, credentials, and projects using dynamic 3D elements, canvas particle physics, soundscapes, and CLI-to-GUI toggle states.",
+      "title": "Reality Layer Brutalist Portfolio",
+      "subtitle": "AI-native futuristic brutalist portfolio with particle systems",
+      "shortDescription": "An interactive, data-driven brutalist portfolio that reorganizes based on visitor intent using Canvas, D3.js, and AI.",
+      "longDescription": "This brutalist portfolio website represents the reality layer itself. It maps out skills, credentials, and projects using dynamic 3D elements, canvas particle physics, soundscapes, and CLI-to-GUI toggle states.",
       "category": "web",
       "subcategories": [],
       "status": "in-progress",
@@ -1078,15 +1336,21 @@
       "period": "May 2026 – Present",
       "type": "internship",
       "highlights": [
-        "Building microservices",
-        "Using HLD for the architecture",
-        "Implementing CI/CD pipelines for automated deployments"
+        "Contributing to the development of VoxGlobal AI, an AI-powered cinematic dubbing and localization platform.",
+        "Leading the development of translation workflows, consent management systems, CI/CD integrations, and platform administration features.",
+        "Working with Python, FastAPI, PostgreSQL, Redis, Docker, Next.js, and modern AI technologies to build scalable software systems.",
+        "Collaborating on system architecture, API design, event-driven workflows, testing, and deployment processes.",
+        "Contributing across the full product lifecycle, from requirements analysis and system design to implementation, testing, and integration."
       ],
       "skillsUsed": [
         "python",
         "fastapi",
         "docker",
-        "react"
+        "react",
+        "next.js",
+        "postgresql",
+        "redis",
+        "generative-ai"
       ],
       "relatedProjectId": "vox",
       "hideFromPublic": false
@@ -1103,7 +1367,10 @@
       "startDate": "2023-09",
       "endDate": "2027-06",
       "grade": "9.5 CGPA",
-      "highlights": [],
+      "highlights": [
+        "Actively building AI-powered applications and software products through academic projects, internships, hackathons, and independent development.",
+        "Technical Event Coordination, Workshop Organizing, Hackathon Participation."
+      ],
       "courses": [
         "Data Structures and Algorithms",
         "Operating Systems",
@@ -1161,9 +1428,9 @@
     {
       "id": "cert002",
       "name": "Google AI Professional Certificate",
-      "issuer": "Coursera",
+      "issuer": "Google",
       "issueDate": "2026-04-30",
-      "credentialUrl": "www.coursera.org/account/accomplishments/professional-cert/DDZ45XY3AD4Y",
+      "credentialUrl": "https://www.coursera.org/account/accomplishments/professional-cert/DDZ45XY3AD4Y",
       "credentialId": "DDZ45XY3AD4Y",
       "icon": "Award",
       "hideFromPublic": false
@@ -1181,9 +1448,9 @@
     {
       "id": "cert004",
       "name": "IBM - Introduction to Artificial Intelligence (AI)",
-      "issuer": "Coursera",
+      "issuer": "IBM",
       "issueDate": "2025-10-25",
-      "credentialUrl": "www.coursera.org/account/accomplishments/verify/MU7EW7O51WHK",
+      "credentialUrl": "https://www.coursera.org/account/accomplishments/verify/MU7EW7O51WHK",
       "credentialId": "MU7EW7O51WHK",
       "icon": "BookOpen",
       "hideFromPublic": false
@@ -1226,14 +1493,14 @@
       "organization": "NSS Organization",
       "role": "Volunteer",
       "period": "2023-2026",
-      "description": "Donated blood twice a year at various Blood donation camps.",
+      "description": "Regular participant in blood donation initiatives organized through NSS, supporting healthcare and community welfare efforts.",
       "icon": "Calendar",
       "hideFromPublic": false
     }
   ],
   "cliQuotes": [
     "Real developers don't need buttons.",
-    "sudo make me a portfolio.",
+    "sudo make me a brutalist-portfolio.",
     "There's no place like 127.0.0.1.",
     "It works on my terminal.",
     "Have you tried turning the CLI off and on again?",
@@ -1242,7 +1509,7 @@
     "In a world full of GUIs, be a CLI.",
     "The command line is mightier than the mouse.",
     "/* TODO: write a funnier quote */",
-    "cat /dev/portfolio | grep awesome",
+    "cat /dev/brutalist-portfolio | grep awesome",
     "chmod 777 my_career"
   ],
   "resume": {
@@ -1254,7 +1521,7 @@
     "phone": "+91-7619482685",
     "linkedIn": "https://linkedin.com/in/shreesha-s-nekkar",
     "github": "https://github.com/shreeshasn",
-    "twitter": "https://twitter.com/",
+    "twitter": "https://twitter.com/shreeshasn",
     "codepen": "https://codepen.io/",
     "website": "https://shreeshasn.github.io/",
     "formspreeUrl": "https://formspree.io/f/xlgvkvyb",
@@ -1357,7 +1624,7 @@
       "@type": "Person",
       "givenName": "Shreesha",
       "familyName": "S Nekkar",
-      "jobTitle": "CS Student",
+      "jobTitle": "Software Engineer",
       "url": "https://shreeshasn.github.io"
     }
   }
