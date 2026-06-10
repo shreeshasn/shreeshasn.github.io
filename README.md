@@ -148,21 +148,39 @@ portfolio-new/
 ---
 
 ## ⚙️ Development & Scripts
-
+ 
 To get started with the repository locally, ensure you have **Node.js (v18+)** installed.
-
+ 
 ### Installation
 ```bash
 npm install
 ```
-
+ 
 ### Script Directory
-
+ 
 | Command | Action |
 | :--- | :--- |
 | `npm run dev` | Spins up the local Vite development server with hot module replacement (HMR). |
-| `npm run build` | Compiles TypeScript and packages production-ready assets into the `dist/` folder. |
+| `npm run build` | Compiles TypeScript, bundles assets, and generates static routing folders (`explore/`, `explore/ui/`, `explore/cli/`) via `postbuild.js`. |
 | `npm run preview` | Serves the built production bundle locally for previewing. |
 | `npm run lint` | Runs ESLint configuration to check codebase health and alignment. |
 
 ---
+
+## 🔀 GitHub Pages Static Routing
+
+Since GitHub Pages is a static file hosting service and doesn't natively support client-side Single Page Application (SPA) routing (like React Router's `BrowserRouter`), the project employs an automated post-build solution:
+*   **Vite Base Configuration:** `base` is configured to `/` in `vite.config.ts` to ensure assets resolve from the root domain.
+*   **Post-build Script (`postbuild.js`):** Automatically copies `dist/index.html` into corresponding folder trees matching your routes (`dist/explore/index.html`, `dist/explore/ui/index.html`, and `dist/explore/cli/index.html`).
+*   This enables seamless page reloads and direct navigation (e.g. typing `https://shreeshasn.github.io/explore/ui` directly in the URL bar) without triggering a `404 Not Found` page or needing a `#` hash router.
+
+---
+
+## 📝 Local Portfolio Editor & Security
+
+The project features a graphical data editor (`editor.html`) for editing the profile database (`src/data/portfolio.json`) without manually editing raw JSON:
+*   **Accessing the Editor:** Start the local development server (`npm run dev`) and navigate to `http://localhost:5173/editor.html`.
+*   **Production Security:** 
+    *   **Excluded from Build:** `editor.html` is kept in the root folder and is not imported in the React app. During `npm run build`, it is completely excluded from the `./dist` deployment bundle.
+    *   **Local-Only API:** The saving backend `/api/portfolio` is injected as a Vite dev server middleware (`vite.config.ts`) and is strictly stripped from the static production build.
+    *   No public user or viewer of the deployed portfolio can access `editor.html` or make POST requests to modify the site's data.

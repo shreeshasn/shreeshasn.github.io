@@ -59,6 +59,6 @@ const portfolioEditorPlugin = () => {
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), portfolioEditorPlugin()],
-  base: './',
+  base: '/',
 })
 
