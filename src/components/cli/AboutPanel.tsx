@@ -35,11 +35,28 @@ export const AboutPanel: React.FC = () => {
         </div>
 
         {fields.map((f) => (
-          <div key={f.key} style={{ display: 'flex', gap: 'var(--spacing-md)', fontSize: '0.875rem' }}>
+          <div
+            key={f.key}
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              gap: 'var(--spacing-md)',
+              fontSize: '0.875rem',
+            }}
+          >
             <span style={{ color: 'var(--color-stone)', minWidth: '130px', fontWeight: 500 }}>
               [{f.key}]
             </span>
-            <span style={{ color: 'var(--color-ink)' }}>{f.value}</span>
+            <span style={{ color: 'var(--color-ink)', flex: 1, minWidth: '200px', wordBreak: 'break-all' }}>
+              {f.key === 'EMAIL' ? (
+                <a href={`mailto:${f.value}`} style={{ color: 'inherit', textDecoration: 'underline' }}>
+                  {f.value}
+                </a>
+              ) : (
+                f.value
+              )}
+            </span>
           </div>
         ))}
       </div>

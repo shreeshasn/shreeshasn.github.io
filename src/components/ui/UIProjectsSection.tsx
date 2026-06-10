@@ -205,7 +205,7 @@ export const UIProjectsSection: React.FC = () => {
             </button>
 
             {/* Header section */}
-            <div>
+            <div style={{ paddingRight: '110px' }}>
               <span style={{ fontSize: '0.75rem', color: 'var(--color-mute)' }}>
                 PROJECT_INSPECTOR // {modalProject.id.toUpperCase()}
               </span>

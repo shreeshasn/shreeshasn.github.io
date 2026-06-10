@@ -29,27 +29,27 @@ const HologramMesh: React.FC<{
   const renderGeometry = () => {
     switch (shapeType) {
       case 'platonis-ai':
-        return <torusKnotGeometry args={[1, 0.3, 100, 16]} />;
+        return <torusKnotGeometry args={[0.55, 0.18, 100, 16]} />;
       case 'noetis-ai':
-        return <icosahedronGeometry args={[1.2, 1]} />;
+        return <icosahedronGeometry args={[0.85, 1]} />;
       case 'audita':
-        return <torusGeometry args={[0.8, 0.3, 16, 100]} />;
+        return <torusGeometry args={[0.6, 0.2, 16, 100]} />;
       case 'vox':
-        return <boxGeometry args={[1.3, 1.3, 1.3]} />;
+        return <boxGeometry args={[1.0, 1.0, 1.0]} />;
       case 'vanguard':
-        return <dodecahedronGeometry args={[1.2, 0]} />;
+        return <dodecahedronGeometry args={[0.9, 0]} />;
       case 'algoscale':
-        return <coneGeometry args={[1, 2, 32]} />;
+        return <coneGeometry args={[0.7, 1.4, 32]} />;
       case 'nexuserp':
-        return <cylinderGeometry args={[1, 1, 2, 32]} />;
+        return <cylinderGeometry args={[0.7, 0.7, 1.4, 32]} />;
       case 'the-devils-advocate':
-        return <octahedronGeometry args={[1.3, 0]} />;
+        return <octahedronGeometry args={[0.9, 0]} />;
       case 'turtlegraphics':
-        return <tetrahedronGeometry args={[1.2, 0]} />;
+        return <tetrahedronGeometry args={[0.9, 0]} />;
       case 'portfolio-website':
-        return <capsuleGeometry args={[0.6, 1, 8, 16]} />;
+        return <capsuleGeometry args={[0.45, 0.7, 8, 16]} />;
       default:
-        return <dodecahedronGeometry args={[1.2, 0]} />;
+        return <dodecahedronGeometry args={[0.9, 0]} />;
     }
   };
 
@@ -344,7 +344,7 @@ export const ProjectHologram: React.FC = () => {
             </button>
 
             {/* Header section */}
-            <div>
+            <div style={{ paddingRight: '110px' }}>
               <span style={{ fontSize: '0.75rem', color: 'var(--color-mute)' }}>
                 PROJECT_INSPECTOR // {modalProject.id.toUpperCase()}
               </span>

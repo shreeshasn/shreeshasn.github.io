@@ -8,6 +8,7 @@ import { ParticleField } from './components/ParticleField';
 import { ExplorePage } from './pages/ExplorePage';
 import { UIModePage } from './pages/UIModePage';
 import { CLIModePage } from './pages/CLIModePage';
+import { MobileWarning } from './components/MobileWarning';
 
 function App() {
   const navigate = useNavigate();
@@ -45,6 +46,9 @@ function App() {
         
         {/* Dynamic header injection */}
         <SEOHead />
+        
+        {/* Mobile warning message for desktop optimization */}
+        <MobileWarning />
         
         {/* Global space background with interactive particles */}
         <div 
