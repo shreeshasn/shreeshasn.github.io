@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-06-08T17:53:12.470Z",
+  "lastUpdated": "2026-06-18T10:57:26.135Z",
   "meta": {
     "title": ">_  SSN.SYS",
     "author": "Shreesha S Nekkar",
@@ -88,7 +88,7 @@
       "name": "Software Development",
       "category": "language",
       "proficiency": 85,
-      "yearsExperience": 2.0,
+      "yearsExperience": 2,
       "description": "General software engineering and product development methodologies",
       "tags": [
         "engineering",
@@ -1553,10 +1553,10 @@
       "public": true
     },
     "codepen": {
-      "url": "https://leetcode.com/u/Shreesha81/",
-      "username": "Shreesha81",
-      "displayName": "LeetCode",
-      "icon": "codepen",
+      "url": "https://medium.com/@shreeshasnekkar81",
+      "username": "shreeshasnekkar81",
+      "displayName": "Medium",
+      "icon": "medium",
       "public": true
     }
   },
